@@ -5,21 +5,9 @@ import DataTable from './components/DataTable'
 import 'semantic-ui-css/semantic.min.css'
 
 const restaurantIdOptions = [
-  {
-    key: '1',
-    text: '1',
-    value: '1'
-  },
-  {
-    key: '2',
-    text: '2',
-    value: '2'
-  },
-  {
-    key: '3',
-    text: '3',
-    value: '3'
-  }
+  { key: '1', text: '1', value: '1' },
+  { key: '2', text: '2', value: '2' },
+  { key: '3', text: '3', value: '3' }
 ]
 
 const metricOptions = [
@@ -41,31 +29,11 @@ const metricOptions = [
 ]
 
 const measureOptions = [
-  {
-    key: 'lt',
-    text: '<',
-    value: 'lt'
-  },
-  {
-    key: 'lte',
-    text: '<=',
-    value: 'lte'
-  },
-  {
-    key: 'eq',
-    text: '=',
-    value: 'eq'
-  },
-  {
-    key: 'gte',
-    text: '>=',
-    value: 'gte'
-  },
-  {
-    key: 'gt',
-    text: '>',
-    value: 'gt'
-  }
+  { key: 'lt', text: '<', value: 'lt' },
+  { key: 'lte', text: '<=', value: 'lte' },
+  { key: 'eq', text: '=', value: 'eq' },
+  { key: 'gte', text: '>=', value: 'gte' },
+  { key: 'gt', text: '>', value: 'gt' }
 ]
 
 const tableHeaders = [
@@ -84,6 +52,11 @@ const tableHeaders = [
 ]
 
 const tableData = [
+  ['1', '2020-09-22', '5', '2020-09-22 07:23:00', '2.50', '2.32', '2', '0', '0.26', '0.00', '0.104', '0.00'],
+  ['1', '2020-09-22', '5', '2020-09-22 07:23:00', '2.50', '2.32', '2', '0', '0.26', '0.00', '0.104', '0.00'],
+  ['1', '2020-09-22', '5', '2020-09-22 07:23:00', '2.50', '2.32', '2', '0', '0.26', '0.00', '0.104', '0.00'],
+  ['1', '2020-09-22', '5', '2020-09-22 07:23:00', '2.50', '2.32', '2', '0', '0.26', '0.00', '0.104', '0.00'],
+  ['1', '2020-09-22', '5', '2020-09-22 07:23:00', '2.50', '2.32', '2', '0', '0.26', '0.00', '0.104', '0.00'],
   ['1', '2020-09-22', '5', '2020-09-22 07:23:00', '2.50', '2.32', '2', '0', '0.26', '0.00', '0.104', '0.00']
 ]
 
