@@ -10,9 +10,7 @@ const FilterForm = ({ restaurantIdOptions, metricOptions, measureOptions }) => {
           placeholder='Select restaurant id'
           options={restaurantIdOptions}
         />
-        <Form.Group
-          widths='equal'
-        >
+        <Form.Group widths='equal'>
           <Form.Input
             label='Date Range'
             type='date'
@@ -24,9 +22,7 @@ const FilterForm = ({ restaurantIdOptions, metricOptions, measureOptions }) => {
             icon='calendar alternate outline'
           />
         </Form.Group>
-        <Form.Group
-          widths='equal'
-        >
+        <Form.Group widths='equal'>
           <Form.Input
             label='Transaction Time'
             type='time'
@@ -40,9 +36,7 @@ const FilterForm = ({ restaurantIdOptions, metricOptions, measureOptions }) => {
             icon='clock outline'
           />
         </Form.Group>
-        <Form.Group
-          widths='equal'
-        >
+        <Form.Group widths='equal'>
           <Form.Select
             fluid
             label='Metric'
@@ -52,8 +46,8 @@ const FilterForm = ({ restaurantIdOptions, metricOptions, measureOptions }) => {
           <Form.Select
             fluid
             label='Measure'
+            placeholder='Choose&hellip;'
             options={measureOptions}
-            value='eq'
           />
           <Form.Input
             fluid
