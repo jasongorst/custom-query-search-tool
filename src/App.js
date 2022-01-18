@@ -4,11 +4,10 @@ import DataTable from './components/DataTable'
 
 import 'semantic-ui-css/semantic.min.css'
 
-const restaurantIdOptions = [
-  { key: '1', text: '1', value: '1' },
-  { key: '2', text: '2', value: '2' },
-  { key: '3', text: '3', value: '3' }
-]
+// array of strings from 1 to 10
+const ids = [...Array(10).keys()].map((_) => (_ + 1).toString())
+
+const restaurantIdOptions = ids.map( (_) => Object({ key: _, text: _, value: _ }) )
 
 const metricOptions = [
   {
