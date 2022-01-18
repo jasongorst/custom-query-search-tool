@@ -1,13 +1,12 @@
 import { Container, Grid } from 'semantic-ui-react'
+import _ from 'lodash'
 import FilterForm from './components/FilterForm'
 import DataTable from './components/DataTable'
 
 import 'semantic-ui-css/semantic.min.css'
 
-// array of strings from 1 to 10
-const ids = [...Array(10).keys()].map((_) => (_ + 1).toString())
-
-const restaurantIdOptions = ids.map( (_) => Object({ key: _, text: _, value: _ }) )
+const ids = _.range(1, 11)
+const restaurantIdOptions = ids.map( (x) => Object({ key: x, text: x, value: x }) )
 
 const metricOptions = [
   {
