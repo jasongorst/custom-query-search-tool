@@ -64,14 +64,14 @@ const App = () => {
       <Container style={{ margin: 50 }}>
         <Grid divided>
           <Grid.Row>
-            <Grid.Column width={5}>
+            <Grid.Column width={6}>
               <FilterForm
                 restaurantIdOptions={restaurantIdOptions}
                 metricOptions={metricOptions}
                 measureOptions={measureOptions}
               />
             </Grid.Column>
-            <Grid.Column width={11}>
+            <Grid.Column width={10}>
               <DataTable
                 tableHeaders={tableHeaders}
                 tableData={tableData}
