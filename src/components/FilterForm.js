@@ -6,6 +6,7 @@ const FilterForm = ({ restaurantIdOptions, metricOptions, measureOptions }) => {
       <Form>
         <Form.Select
           fluid
+          multiple
           label='Restaurant ID'
           placeholder='Select restaurant id'
           options={restaurantIdOptions}
