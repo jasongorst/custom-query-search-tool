@@ -1,4 +1,5 @@
 import { Container, Form } from 'semantic-ui-react'
+import MetricFilter from "./MetricFilter"
 
 const FilterForm = ({ restaurantIdOptions, metricOptions, measureOptions }) => {
   return (
@@ -37,25 +38,10 @@ const FilterForm = ({ restaurantIdOptions, metricOptions, measureOptions }) => {
             icon='clock outline'
           />
         </Form.Group>
-        <Form.Group widths='equal'>
-          <Form.Select
-            fluid
-            label='Metric'
-            placeholder='Choose&hellip;'
-            options={metricOptions}
-          />
-          <Form.Select
-            fluid
-            label='Measure'
-            placeholder='Choose&hellip;'
-            options={measureOptions}
-          />
-          <Form.Input
-            fluid
-            label='Value'
-            placeholder='0'
-          />
-        </Form.Group>
+        <MetricFilter
+          metricOptions={metricOptions}
+          measureOptions={measureOptions}
+        />
         <Form.Button fluid primary>
           Filter Transactions
         </Form.Button>
