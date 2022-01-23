@@ -3,7 +3,8 @@ import 'semantic-ui-css/semantic.min.css'
 import FilterForm from './components/FilterForm'
 import DataTable from './components/DataTable'
 
-import { restaurantIdOptions, metricOptions, measureOptions, tableHeaders, tableData} from './helpers/mockData'
+import { restaurantIdOptions, measureOptions, tableHeaders, tableData } from './helpers/mockData'
+import { metricOptions } from './helpers/metricOptions'
 
 const App = () => {
   return (
@@ -11,14 +12,16 @@ const App = () => {
       <Container style={{ margin: 50 }}>
         <Grid divided>
           <Grid.Row>
-            <Grid.Column width={6}>
+            <Grid.Column>
               <FilterForm
                 restaurantIdOptions={restaurantIdOptions}
                 metricOptions={metricOptions}
                 measureOptions={measureOptions}
               />
             </Grid.Column>
-            <Grid.Column width={10}>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column>
               <DataTable
                 tableHeaders={tableHeaders}
                 tableData={tableData}

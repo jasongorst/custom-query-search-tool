@@ -1,25 +1,13 @@
 import _ from 'lodash'
 
 const ids = _.range(1, 11)
-export const restaurantIdOptions = ids.map( (x) => Object({ key: x, text: x, value: x }) )
-
-export const metricOptions = [
+export const restaurantIdOptions = ids.map((x) => Object(
   {
-    key: 'TransactionTotalAmount',
-    text: 'TransactionTotalAmount',
-    value: 'TransactionTotalAmount'
-  },
-  {
-    key: 'ItemSoldQty',
-    text: 'ItemSoldQty',
-    value: 'ItemSoldQty'
-  },
-  {
-    key: 'DiscountAmount',
-    text: 'DiscountAmount',
-    value: 'DiscountAmount'
+    key: x,
+    text: `Restaurant ${x}`,
+    value: x
   }
-]
+))
 
 export const measureOptions = [
   { key: 'lt', text: '<', value: 'lt' },
