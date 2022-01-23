@@ -2,18 +2,18 @@ import { Table } from 'semantic-ui-react'
 
 const DataTable = ({ tableHeaders, tableData }) => {
 
-  const headers = tableHeaders.map((header) => {
+  const headers = tableHeaders.map((header, hdridx) => {
     return (
-      <Table.HeaderCell singleLine>{header}</Table.HeaderCell>
+      <Table.HeaderCell key={`headers-${hdridx}`} singleLine>{header}</Table.HeaderCell>
     )
   })
 
-  const body = tableData.map((row) => {
+  const body = tableData.map((row, rowidx) => {
     return (
-      <Table.Row>
-        {row.map((cell) => {
+      <Table.Row key={rowidx}>
+        {row.map((cell, colidx) => {
           return (
-            <Table.Cell singleLine>{cell}</Table.Cell>
+            <Table.Cell key={`${rowidx}-${colidx}`} singleLine>{cell}</Table.Cell>
           )
         })}
       </Table.Row>
@@ -23,9 +23,9 @@ const DataTable = ({ tableHeaders, tableData }) => {
   return (
     <Table striped>
       <Table.Header>
-      <Table.Row>
-        {headers}
-      </Table.Row>
+        <Table.Row key={'headers'}>
+          {headers}
+        </Table.Row>
       </Table.Header>
 
       <Table.Body>
