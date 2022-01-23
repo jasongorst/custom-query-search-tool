@@ -1,7 +1,7 @@
 import { Container, Form, Grid } from 'semantic-ui-react'
 import MetricFilter from "./MetricFilter"
 
-const FilterForm = ({restaurantIdOptions, metricOptions, measureOptions}) => {
+const FilterForm = ( {restaurantIdOptions, metricOptions, measureOptions} ) => {
   return (
     <Container>
       <Form>
@@ -18,12 +18,12 @@ const FilterForm = ({restaurantIdOptions, metricOptions, measureOptions}) => {
               <Form.Group widths="equal">
                 <Form.Input
                   label="Date Range"
-                  type="date"
+                  type="text"
                   icon="calendar alternate outline"
                 />
                 <Form.Input
                   label="To"
-                  type="date"
+                  type="text"
                   icon="calendar alternate outline"
                 />
               </Form.Group>

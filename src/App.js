@@ -3,8 +3,8 @@ import 'semantic-ui-css/semantic.min.css'
 import FilterForm from './components/FilterForm'
 import DataTable from './components/DataTable'
 
-import { restaurantIdOptions, measureOptions, tableHeaders, tableData } from './helpers/mockData'
-import { metricOptions } from './helpers/metricOptions'
+import { restaurantIdOptions, measureOptions, metricOptions } from './helpers/dropdownOptions'
+import { tableHeaders, tableData } from './helpers/mockData'
 
 const App = () => {
   return (

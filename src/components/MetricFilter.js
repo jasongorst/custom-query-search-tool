@@ -1,4 +1,4 @@
-import { Form, Icon } from 'semantic-ui-react'
+import { Form, Button, Icon } from 'semantic-ui-react'
 
 const MetricFilter = ( {metricOptions, measureOptions} ) => {
   return (
@@ -20,8 +20,10 @@ const MetricFilter = ( {metricOptions, measureOptions} ) => {
         label='Value'
         placeholder='0'
       />
-      <Icon name='plus square outline' />
-      <Icon name='minus square outline' />
+      <Button.Group basic icon style={{ padding: 0, border: 'none'}}>
+        <Button compact style={{ padding: 0, border: 'none'}}><Icon name='plus square outline' /></Button>
+        <Button compact style={{ padding: 0, border: 'none'}}><Icon name='minus square outline' /></Button>
+      </Button.Group>
     </Form.Group>
   )
 }

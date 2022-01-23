@@ -1,22 +1,3 @@
-import _ from 'lodash'
-
-const ids = _.range(1, 11)
-export const restaurantIdOptions = ids.map((x) => Object(
-  {
-    key: x,
-    text: `Restaurant ${x}`,
-    value: x
-  }
-))
-
-export const measureOptions = [
-  { key: 'lt', text: '<', value: 'lt' },
-  { key: 'lte', text: '<=', value: 'lte' },
-  { key: 'eq', text: '=', value: 'eq' },
-  { key: 'gte', text: '>=', value: 'gte' },
-  { key: 'gt', text: '>', value: 'gt' }
-]
-
 export const tableHeaders = [
   'RestaurantId',
   'BusDt',
