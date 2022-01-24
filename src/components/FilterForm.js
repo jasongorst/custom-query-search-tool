@@ -1,13 +1,17 @@
+import { useState } from 'react'
 import { Container, Form, Grid } from 'semantic-ui-react'
 import MetricFilter from "./MetricFilter"
 
-const FilterForm = ( {restaurantIdOptions, metricOptions, measureOptions} ) => {
+const FilterForm = ({restaurantIdOptions, metricOptions, measureOptions}) => {
+
+  const [restaurantIds, setRestaurantIds] = useState([])
+
   return (
     <Container>
       <Form>
-      <Grid>
-        <Grid.Row>
-          <Grid.Column width={8}>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={8}>
               <Form.Select
                 fluid
                 multiple
@@ -18,12 +22,12 @@ const FilterForm = ( {restaurantIdOptions, metricOptions, measureOptions} ) => {
               <Form.Group widths="equal">
                 <Form.Input
                   label="Date Range"
-                  type="text"
+                  type="date"
                   icon="calendar alternate outline"
                 />
                 <Form.Input
                   label="To"
-                  type="text"
+                  type="date"
                   icon="calendar alternate outline"
                 />
               </Form.Group>
@@ -41,18 +45,18 @@ const FilterForm = ( {restaurantIdOptions, metricOptions, measureOptions} ) => {
                   icon="clock outline"
                 />
               </Form.Group>
-              <Form.Button fluid primary>
+              <Form.Button fluid primary type="submit">
                 Filter Transactions
               </Form.Button>
-          </Grid.Column>
-          <Grid.Column width={8}>
-            <MetricFilter
-              metricOptions={metricOptions}
-              measureOptions={measureOptions}
-            />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <MetricFilter
+                metricOptions={metricOptions}
+                measureOptions={measureOptions}
+              />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </Form>
     </Container>
   )
