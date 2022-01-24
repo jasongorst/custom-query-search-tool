@@ -16,6 +16,7 @@
     "react-dom": "^16.14.0",
     "react-scripts": "5.0.0",
     "react-with-direction": "^1.4.0",
+    "semantic-ui-calendar-react": "^0.15.3",
     "semantic-ui-css": "github:Semantic-Org/Semantic-UI-CSS",
     "semantic-ui-react": "^2.0.4",
     "web-vitals": "^2.1.3"
