@@ -8,6 +8,7 @@ const formatRequest = (restaurantIds, dateRange, fromTime, toTime, metric) => {
   var fromHour = parseInt(fromTime.slice(0, 2), 10)
   var toHour = parseInt(toTime.slice(0, 2), 10)
 
+  // assume toHour is on the following day if it's less than fromHour
   if (toHour < fromHour) {
     toHour += 24
   }
@@ -20,7 +21,7 @@ const formatRequest = (restaurantIds, dateRange, fromTime, toTime, metric) => {
     },
   ]
 
-  return (
+  return JSON.stringify(
     {
       restaurantIds: restaurantIds,
       fromDate: fromDate,
@@ -28,7 +29,7 @@ const formatRequest = (restaurantIds, dateRange, fromTime, toTime, metric) => {
       fromHour: fromHour,
       toHour: toHour,
       metricCriteria: metricCriteria,
-    }
+    },
   )
 }
 
