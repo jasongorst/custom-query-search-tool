@@ -6,6 +6,7 @@ const DatesRangePicker = ({dateRange, onDateRangeChange}) => {
     <Form.Field>
       <label>Date Range</label>
       <DatesRangeInput
+        allowSameEndDate
         name="dateRange"
         dateFormat="MM/DD/YYYY"
         icon="calendar alternate outline"

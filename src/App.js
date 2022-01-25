@@ -13,7 +13,7 @@ const App = () => {
               <FilterForm/>
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row>
+          <Grid.Row style={{overflow: 'auto'}}>
             <Grid.Column>
               <DataTable/>
             </Grid.Column>
