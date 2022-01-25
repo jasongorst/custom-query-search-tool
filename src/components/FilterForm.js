@@ -7,9 +7,8 @@ import MetricFilter from "./MetricFilter"
 import formatRequest from '../helpers/formatRequest'
 
 const FilterForm = () => {
-
   const [restaurantIds, setRestaurantIds] = useState([])
-  const [dateRange, setDateRange] = useState()
+  const [dateRange, setDateRange] = useState('')
   const [fromTime, setFromTime] = useState('06:00 am')
   const [toTime, setToTime] = useState('05:00 am')
   const [metric, setMetric] = useState({
@@ -26,12 +25,17 @@ const FilterForm = () => {
     setDateRange(value)
   }
 
-  const onFromTimeChange = (e, {value}) => {
-    setFromTime(value)
-  }
-
-  const onToTimeChange = (e, {value}) => {
-    setToTime(value)
+  const onTimeChange = (e, {name, value}) => {
+    switch (name) {
+      case 'fromTime':
+        setFromTime(value)
+        break
+      case 'toTime':
+        setToTime(value)
+        break
+      default:
+        console.log(`onTimeChange called with unknown name ${name}.`)
+    }
   }
 
   const onMetricChange = (e, {name, value}) => {
@@ -62,8 +66,7 @@ const FilterForm = () => {
               <TimeRange
                 fromTime={fromTime}
                 toTime={toTime}
-                onFromTimeChange={onFromTimeChange}
-                onToTimeChange={onToTimeChange}
+                onTimeChange={onTimeChange}
               />
 
               <Form.Button

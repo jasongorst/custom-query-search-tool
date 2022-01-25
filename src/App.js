@@ -6,14 +6,14 @@ import DataTable from './components/DataTable'
 const App = () => {
   return (
     <div className="App">
-      <Container style={{ margin: 50 }}>
-        <Grid divided>
-          <Grid.Row>
+      <Container style={{margin: 50}}>
+        <Grid>
+          <Grid.Row columns={1}>
             <Grid.Column>
               <FilterForm/>
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row style={{overflow: 'auto'}}>
+          <Grid.Row columns={1} style={{overflow: 'auto'}}>
             <Grid.Column>
               <DataTable/>
             </Grid.Column>

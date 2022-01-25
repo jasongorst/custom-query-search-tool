@@ -2,11 +2,13 @@ import moment from 'moment'
 
 const formatRequest = (restaurantIds, dateRange, fromTime, toTime, metric) => {
   const DATE_FORMAT = "MM/DD/YYYY"
+  const TIME_FORMAT = "hh:mm a"
+  const HOUR_FORMAT = "H"
 
   var [fromDate, toDate] = dateRange.split(' - ').map((date) => moment(date, DATE_FORMAT).toISOString())
 
-  var fromHour = parseInt(fromTime.slice(0, 2), 10)
-  var toHour = parseInt(toTime.slice(0, 2), 10)
+  var fromHour = parseInt(moment(fromTime, TIME_FORMAT).format(HOUR_FORMAT))
+  var toHour = parseInt(moment(toTime, TIME_FORMAT).format(HOUR_FORMAT))
 
   // assume toHour is on the following day if it's less than fromHour
   if (toHour < fromHour) {
