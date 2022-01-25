@@ -1,33 +1,21 @@
-import React from 'react'
+import { Form } from 'semantic-ui-react'
 import { DatesRangeInput } from 'semantic-ui-calendar-react'
 
-export class DateRangePicker extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      date: '',
-      time: '',
-      dateTime: '',
-      datesRange: '',
-    }
-  }
-
-  handleChange = (event, {name, value}) => {
-    if (this.state.hasOwnProperty(name)) {
-      this.setState({[name]: value})
-    }
-  }
-
-  render() {
-    return (
+const DatesRangePicker = ({dateRange, onDateRangeChange}) => {
+  return (
+    <Form.Field>
+      <label>Date Range</label>
       <DatesRangeInput
         name="dateRange"
-        placeholder="From &ndash; To"
-        value={this.state.datesRange}
+        dateFormat="MM/DD/YYYY"
+        icon="calendar alternate outline"
+        placeholder="Date From &ndash; Date To"
+        value={dateRange}
         iconPosition="right"
-        onChange={this.handleChange}
+        onChange={onDateRangeChange}
       />
-    )
-  }
+    </Form.Field>
+  )
 }
+
+export default DatesRangePicker

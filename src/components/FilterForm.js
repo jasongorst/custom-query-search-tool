@@ -1,64 +1,87 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Container, Form, Grid } from 'semantic-ui-react'
-import { DateRangePicker } from './DateRangePicker.js'
+import RestaurantIdsSelect from './RestaurantIdsSelect'
+import DateRangePicker from './DateRangePicker'
+import TimeRange from './TimeRange'
 import MetricFilter from "./MetricFilter"
+import formatRequest from '../helpers/formatRequest'
 
-const FilterForm = ({restaurantIdOptions, metricOptions, measureOptions}) => {
+const FilterForm = () => {
 
   const [restaurantIds, setRestaurantIds] = useState([])
+  const [dateRange, setDateRange] = useState()
+  const [fromTime, setFromTime] = useState('06:00 am')
+  const [toTime, setToTime] = useState('05:00 am')
+  const [metric, setMetric] = useState({
+    metric: '',
+    measure: '',
+    value: '',
+  })
+
+  const onRestaurantIdsChange = (e, {value}) => {
+    setRestaurantIds(value)
+  }
+
+  const onDateRangeChange = (e, {value}) => {
+    setDateRange(value)
+  }
+
+  const onFromTimeChange = (e, {value}) => {
+    setFromTime(value)
+  }
+
+  const onToTimeChange = (e, {value}) => {
+    setToTime(value)
+  }
+
+  const onMetricChange = (e, {name, value}) => {
+    setMetric({...metric, [name]: value})
+  }
+
+  const filterTransactions = () => {
+    console.log(formatRequest(restaurantIds, dateRange, fromTime, toTime, metric))
+  }
 
   return (
     <Container>
       <Form>
-      <Grid>
-        <Grid.Row>
-          <Grid.Column width={8}>
-            <Form.Select
-              fluid
-              multiple
-              label="Restaurant ID"
-              placeholder="Select restaurant id"
-              options={restaurantIdOptions}
-            />
-            {/*<Form.Group widths="equal">*/}
-            {/*  <Form.Input*/}
-            {/*    label="Date Range"*/}
-            {/*    type="text"*/}
-            {/*    icon="calendar alternate outline"*/}
-            {/*  />*/}
-            {/*  <Form.Input*/}
-            {/*    label="To"*/}
-            {/*    type="text"*/}
-            {/*    icon="calendar alternate outline"*/}
-            {/*  />*/}
-            {/*</Form.Group>*/}
+        <Grid>
+          <Grid.Row>
 
-            <DateRangePicker />
-
-            <Form.Group widths="equal">
-              <Form.Input
-                label="Transaction Time"
-                type="time"
-                placeholder="06:00 AM"
-                icon="clock outline"
+            <Grid.Column width={8}>
+              <RestaurantIdsSelect
+                onRestaurantIdsChange={onRestaurantIdsChange}
+                restaurantIds={restaurantIds}
               />
-              <Form.Input
-                label="To"
-                  type="time"
-                  placeholder="05:00 AM"
-                  icon="clock outline"
-                />
-              </Form.Group>
-              <Form.Button fluid primary type="submit">
+
+              <DateRangePicker
+                dateRange={dateRange}
+                onDateRangeChange={onDateRangeChange}
+              />
+
+              <TimeRange
+                fromTime={fromTime}
+                toTime={toTime}
+                onFromTimeChange={onFromTimeChange}
+                onToTimeChange={onToTimeChange}
+              />
+
+              <Form.Button
+                fluid
+                primary
+                onClick={filterTransactions}
+              >
                 Filter Transactions
               </Form.Button>
             </Grid.Column>
+
             <Grid.Column width={8}>
               <MetricFilter
-                metricOptions={metricOptions}
-                measureOptions={measureOptions}
+                metric={metric}
+                onMetricChange={onMetricChange}
               />
             </Grid.Column>
+
           </Grid.Row>
         </Grid>
       </Form>

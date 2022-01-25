@@ -1,6 +1,7 @@
 import { Table } from 'semantic-ui-react'
+import { tableData, tableHeaders } from '../helpers/mockTableData'
 
-const DataTable = ({ tableHeaders, tableData }) => {
+const DataTable = () => {
 
   const headers = tableHeaders.map((header, hdridx) => {
     return (
