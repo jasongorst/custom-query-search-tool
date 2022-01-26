@@ -18,10 +18,10 @@ export const metricOptions = metricDefinitions.map((def, index) => Object(
     }
 ))
 
-export const measureOptions = [
-  { key: 'lt', text: '<', value: 'LessThan' },
-  { key: 'lte', text: '<=', value: 'LessThanOrEqual' },
-  { key: 'eq', text: '=', value: 'Equal' },
-  { key: 'gte', text: '>=', value: 'GreaterThanOrEqual' },
-  { key: 'gt', text: '>', value: 'GreaterThan' }
+export const compareOptions = [
+  {key: 'lt', text: '<', value: 'LessThan'},
+  {key: 'lte', text: '<=', value: 'LessThanOrEqual'},
+  {key: 'eq', text: '=', value: 'Equal'},
+  {key: 'gte', text: '>=', value: 'GreaterThanOrEqual'},
+  {key: 'gt', text: '>', value: 'GreaterThan'},
 ]

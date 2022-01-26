@@ -6,6 +6,7 @@ const RestaurantSelect = ({restaurantIds, onRestaurantIdsChange}) => {
     <Form.Select
       fluid
       multiple
+      name="restaurantIds"
       label="Restaurant ID"
       placeholder="Select Restaurant IDs&hellip;"
       options={restaurantIdOptions}

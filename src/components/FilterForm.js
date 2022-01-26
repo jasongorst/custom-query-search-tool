@@ -7,43 +7,34 @@ import MetricFilter from "./MetricFilter"
 import formatRequest from '../helpers/formatRequest'
 
 const FilterForm = () => {
-  const [restaurantIds, setRestaurantIds] = useState([])
-  const [dateRange, setDateRange] = useState('')
-  const [fromTime, setFromTime] = useState('06:00 am')
-  const [toTime, setToTime] = useState('05:00 am')
-  const [metric, setMetric] = useState({
-    metric: '',
-    measure: '',
-    value: '',
+  const [formData, setFormData] = useState({
+    restaurantIds: [],
+    dateRange: '',
+    fromTime: '06:00 am',
+    toTime: '05:00 am',
+    metricCriteria: {
+      metricCode: '',
+      compareType: '',
+      value: '',
+    },
   })
 
-  const onRestaurantIdsChange = (e, {value}) => {
-    setRestaurantIds(value)
+  const handleChange = (e, {name, value}) => {
+    setFormData({...formData, [name]: value})
   }
 
-  const onDateRangeChange = (e, {value}) => {
-    setDateRange(value)
-  }
-
-  const onTimeChange = (e, {name, value}) => {
-    switch (name) {
-      case 'fromTime':
-        setFromTime(value)
-        break
-      case 'toTime':
-        setToTime(value)
-        break
-      default:
-        console.log(`onTimeChange called with unknown name ${name}.`)
-    }
-  }
-
-  const onMetricChange = (e, {name, value}) => {
-    setMetric({...metric, [name]: value})
+  const handleMetricChange = (e, {name, value}) => {
+    setFormData({
+      ...formData,
+      metricCriteria: {
+        ...formData.metricCriteria,
+        [name]: value,
+      },
+    })
   }
 
   const filterTransactions = () => {
-    console.log(formatRequest(restaurantIds, dateRange, fromTime, toTime, metric))
+    console.log(formatRequest(formData))
   }
 
   return (
@@ -54,19 +45,19 @@ const FilterForm = () => {
 
             <Grid.Column width={8}>
               <RestaurantIdsSelect
-                onRestaurantIdsChange={onRestaurantIdsChange}
-                restaurantIds={restaurantIds}
+                restaurantIds={formData.restaurantIds}
+                onRestaurantIdsChange={handleChange}
               />
 
               <DateRangePicker
-                dateRange={dateRange}
-                onDateRangeChange={onDateRangeChange}
+                dateRange={formData.dateRange}
+                onDateRangeChange={handleChange}
               />
 
               <TimeRange
-                fromTime={fromTime}
-                toTime={toTime}
-                onTimeChange={onTimeChange}
+                fromTime={formData.fromTime}
+                toTime={formData.toTime}
+                onTimeChange={handleChange}
               />
 
               <Form.Button
@@ -80,8 +71,8 @@ const FilterForm = () => {
 
             <Grid.Column width={8}>
               <MetricFilter
-                metric={metric}
-                onMetricChange={onMetricChange}
+                metricCriteria={formData.metricCriteria}
+                onMetricChange={handleMetricChange}
               />
             </Grid.Column>
 
