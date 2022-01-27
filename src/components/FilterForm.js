@@ -10,8 +10,8 @@ const FilterForm = () => {
   const [formData, setFormData] = useState({
     restaurantIds: [],
     dateRange: '',
-    fromTime: '06:00 am',
-    toTime: '05:00 am',
+    fromHour: '06:00 am',
+    toHour: '05:00 am',
     metricCriteria: {
       metricCode: '',
       compareType: '',
@@ -39,7 +39,7 @@ const FilterForm = () => {
 
   return (
     <Container>
-      <Form>
+      <Form onSubmit={filterTransactions}>
         <Grid>
           <Grid.Row>
 
@@ -55,15 +55,15 @@ const FilterForm = () => {
               />
 
               <TimeRange
-                fromTime={formData.fromTime}
-                toTime={formData.toTime}
+                fromHour={formData.fromHour}
+                toHour={formData.toHour}
                 onTimeChange={handleChange}
               />
 
               <Form.Button
                 fluid
                 primary
-                onClick={filterTransactions}
+                type="submit"
               >
                 Filter Transactions
               </Form.Button>
