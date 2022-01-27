@@ -1,7 +1,7 @@
 import { Form } from 'semantic-ui-react'
 import { TimeInput } from 'semantic-ui-calendar-react'
 
-const TimeRange = ({fromHour, toHour, onTimeChange}) => {
+const TimeRange = ({fromHour, toHour, onChange}) => {
   return (
     <Form.Group widths="equal">
       <Form.Field>
@@ -14,7 +14,7 @@ const TimeRange = ({fromHour, toHour, onTimeChange}) => {
           name="fromHour"
           placeholder="From"
           value={fromHour}
-          onChange={onTimeChange}
+          onChange={onChange}
         />
       </Form.Field>
       <Form.Field>
@@ -27,7 +27,7 @@ const TimeRange = ({fromHour, toHour, onTimeChange}) => {
           name="toHour"
           placeholder="To"
           value={toHour}
-          onChange={onTimeChange}
+          onChange={onChange}
         />
       </Form.Field>
     </Form.Group>

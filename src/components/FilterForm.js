@@ -46,18 +46,18 @@ const FilterForm = () => {
             <Grid.Column width={8}>
               <RestaurantIdsSelect
                 restaurantIds={formData.restaurantIds}
-                onRestaurantIdsChange={handleChange}
+                onChange={handleChange}
               />
 
               <DateRangePicker
                 dateRange={formData.dateRange}
-                onDateRangeChange={handleChange}
+                onChange={handleChange}
               />
 
               <TimeRange
                 fromHour={formData.fromHour}
                 toHour={formData.toHour}
-                onTimeChange={handleChange}
+                onChange={handleChange}
               />
 
               <Form.Button
@@ -72,7 +72,7 @@ const FilterForm = () => {
             <Grid.Column width={8}>
               <MetricFilter
                 metricCriteria={formData.metricCriteria}
-                onMetricChange={handleMetricChange}
+                onChange={handleMetricChange}
               />
             </Grid.Column>
 

@@ -1,7 +1,7 @@
 import { Button, Form, Icon } from 'semantic-ui-react'
 import { compareOptions, metricOptions } from '../helpers/dropdownOptions'
 
-const MetricFilter = ({metricCriteria, onMetricChange}) => {
+const MetricFilter = ({metricCriteria, onChange}) => {
 
   return (
     <Form.Group widths="equal">
@@ -12,7 +12,7 @@ const MetricFilter = ({metricCriteria, onMetricChange}) => {
         placeholder="Choose&hellip;"
         options={metricOptions}
         value={metricCriteria.metricCode}
-        onChange={onMetricChange}
+        onChange={onChange}
       />
       <Form.Select
         name="compareType"
@@ -21,7 +21,7 @@ const MetricFilter = ({metricCriteria, onMetricChange}) => {
         placeholder="Choose&hellip;"
         options={compareOptions}
         value={metricCriteria.compareType}
-        onChange={onMetricChange}
+        onChange={onChange}
       />
       <Form.Input
         name="value"
@@ -29,7 +29,7 @@ const MetricFilter = ({metricCriteria, onMetricChange}) => {
         label="Value"
         placeholder=""
         value={metricCriteria.value}
-        onChange={onMetricChange}
+        onChange={onChange}
       />
       <Button.Group basic icon style={{border: 'none'}}>
         <Button compact style={{padding: 0, border: 'none'}}><Icon name="plus square outline"/></Button>

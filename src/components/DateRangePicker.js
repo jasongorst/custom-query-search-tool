@@ -1,7 +1,7 @@
 import { Form } from 'semantic-ui-react'
 import { DatesRangeInput } from 'semantic-ui-calendar-react'
 
-const DatesRangePicker = ({dateRange, onDateRangeChange}) => {
+const DatesRangePicker = ({dateRange, onChange}) => {
   return (
     <Form.Field>
       <label>Date Range</label>
@@ -13,7 +13,7 @@ const DatesRangePicker = ({dateRange, onDateRangeChange}) => {
         placeholder="Date From &ndash; Date To"
         value={dateRange}
         iconPosition="right"
-        onChange={onDateRangeChange}
+        onChange={onChange}
       />
     </Form.Field>
   )

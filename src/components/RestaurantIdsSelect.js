@@ -1,7 +1,7 @@
 import { Form } from 'semantic-ui-react'
 import { restaurantIdOptions } from '../helpers/dropdownOptions'
 
-const RestaurantSelect = ({restaurantIds, onRestaurantIdsChange}) => {
+const RestaurantSelect = ({restaurantIds, onChange}) => {
   return (
     <Form.Select
       fluid
@@ -10,7 +10,7 @@ const RestaurantSelect = ({restaurantIds, onRestaurantIdsChange}) => {
       label="Restaurant ID"
       placeholder="Select Restaurant IDs&hellip;"
       options={restaurantIdOptions}
-      onChange={onRestaurantIdsChange}
+      onChange={onChange}
       value={restaurantIds}
     />
   )
