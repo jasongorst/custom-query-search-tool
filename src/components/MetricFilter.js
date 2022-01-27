@@ -1,4 +1,4 @@
-import { Button, Form, Icon } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 import { compareOptions, metricOptions } from '../helpers/dropdownOptions'
 
 const MetricFilter = ({metricCriteria, onChange}) => {
@@ -32,8 +32,8 @@ const MetricFilter = ({metricCriteria, onChange}) => {
         onChange={onChange}
       />
       <Button.Group basic icon style={{border: 'none'}}>
-        <Button compact style={{padding: 0, border: 'none'}}><Icon name="plus square outline"/></Button>
-        <Button compact style={{padding: 0, border: 'none'}}><Icon name="minus square outline"/></Button>
+        <Button compact type="button" icon="minus square outline" style={{padding: 0, border: 'none'}}/>
+        <Button compact type="button" icon="plus square outline" style={{padding: 0, border: 'none'}}/>
       </Button.Group>
     </Form.Group>
   )
