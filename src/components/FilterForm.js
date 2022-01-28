@@ -42,7 +42,6 @@ const FilterForm = () => {
       <Form onSubmit={filterTransactions}>
         <Grid>
           <Grid.Row>
-
             <Grid.Column width={8}>
               <RestaurantIdsSelect
                 restaurantIds={formData.restaurantIds}
@@ -59,14 +58,6 @@ const FilterForm = () => {
                 toHour={formData.toHour}
                 onChange={handleChange}
               />
-
-              <Form.Button
-                fluid
-                primary
-                type="submit"
-              >
-                Filter Transactions
-              </Form.Button>
             </Grid.Column>
 
             <Grid.Column width={8}>
@@ -75,7 +66,20 @@ const FilterForm = () => {
                 onChange={handleMetricChange}
               />
             </Grid.Column>
+          </Grid.Row>
 
+          <Grid.Row columns={3}>
+            <Grid.Column/>
+            <Grid.Column>
+              <Form.Button
+                fluid
+                primary
+                type="submit"
+              >
+                Filter Transactions
+              </Form.Button>
+            </Grid.Column>
+            <Grid.Column/>
           </Grid.Row>
         </Grid>
       </Form>

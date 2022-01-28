@@ -25,13 +25,13 @@ const MetricFilter = ({metricCriteria, onChange}) => {
       })
   }, [])
 
-  const metricOptions = metricDefinitions.map((metric, index) => Object(
-    {
+  const metricOptions = metricDefinitions.map((metric, index) => {
+    return {
       key: index,
       text: metric.alias,
       value: metric.metricCode,
-    },
-  ))
+    }
+  })
 
   return (
     <Form.Group widths="equal">
