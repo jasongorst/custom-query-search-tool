@@ -1,7 +1,11 @@
 import { Table } from 'semantic-ui-react'
-import { tableData, tableHeaders } from '../helpers/mockTableData'
+import formatResponseData from '../helpers/formatResponseData'
+
+import responseData from '../response.json'
 
 const DataTable = () => {
+
+  const [tableHeaders, tableData] = formatResponseData(responseData)
 
   const headers = tableHeaders.map((header, hdridx) => {
     return (

@@ -1,5 +1,5 @@
-import { Container, Grid } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
+import { Container, Grid } from 'semantic-ui-react'
 import FilterForm from './components/FilterForm'
 import DataTable from './components/DataTable'
 
