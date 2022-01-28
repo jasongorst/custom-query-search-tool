@@ -1,5 +1,4 @@
 import _ from 'lodash'
-import { metricDefinitions } from './metricDefinitions'
 
 const ids = _.range(1, 11)
 export const restaurantIdOptions = ids.map((x) => Object(
@@ -8,14 +7,6 @@ export const restaurantIdOptions = ids.map((x) => Object(
     text: `Restaurant ${x}`,
     value: x
   }
-))
-
-export const metricOptions = metricDefinitions.map((def, index) => Object(
-  {
-      key: index,
-      text: def.alias,
-      value: def.metricCode
-    }
 ))
 
 export const compareOptions = [
