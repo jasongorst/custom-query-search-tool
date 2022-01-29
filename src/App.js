@@ -7,6 +7,7 @@ import { URL_API } from './config'
 
 const App = () => {
   const [metricDefinitions, setMetricDefinitions] = useState([])
+  const [request, setRequest] = useState([])
 
   const getData = async (url = "") => {
     const response = await fetch(url, {
@@ -43,13 +44,15 @@ const App = () => {
               <FilterForm
                 metricDefinitions={metricDefinitions}
                 metricOptions={metricOptions}
+                setRequest={setRequest}
               />
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row columns={1} style={{overflow: 'auto'}}>
+          <Grid.Row columns={1} style={{"overflow-x": "scroll"}}>
             <Grid.Column>
               <DataTable
                 metricDefinitions={metricDefinitions}
+                request={request}
               />
             </Grid.Column>
           </Grid.Row>

@@ -15,14 +15,14 @@ const formatRequest = ({restaurantIds, dateRange, fromHour, toHour, metricCriter
     toHour += 24
   }
 
-  // metricCriteria = [
-  //   {
-  //     ...metricCriteria,
-  //     value: parseFloat(metricCriteria.value),
-  //   },
-  // ]
+  metricCriteria = metricCriteria.map((mc) => Object(
+    {
+      ...mc,
+      value: parseFloat(mc.value),
+    },
+  ))
 
-  return JSON.stringify(
+  return (
     {
       restaurantIds: restaurantIds,
       fromDate: fromDate,
@@ -30,7 +30,7 @@ const formatRequest = ({restaurantIds, dateRange, fromHour, toHour, metricCriter
       fromHour: fromHour,
       toHour: toHour,
       metricCriteria: metricCriteria,
-    },
+    }
   )
 }
 

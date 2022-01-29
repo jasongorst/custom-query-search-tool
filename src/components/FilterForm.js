@@ -6,7 +6,7 @@ import TimeRange from './TimeRange'
 import Metrics from "./Metrics"
 import formatRequest from '../helpers/formatRequest'
 
-const FilterForm = ({metricDefinitions, metricOptions}) => {
+const FilterForm = ({metricDefinitions, metricOptions, setRequest}) => {
   const [formData, setFormData] = useState({
     restaurantIds: [],
     dateRange: '',
@@ -33,7 +33,7 @@ const FilterForm = ({metricDefinitions, metricOptions}) => {
   }
 
   const filterTransactions = () => {
-    console.log(formatRequest(formData))
+    setRequest(formatRequest(formData))
   }
 
   return (
