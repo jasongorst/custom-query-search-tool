@@ -15,12 +15,12 @@ const formatRequest = ({restaurantIds, dateRange, fromHour, toHour, metricCriter
     toHour += 24
   }
 
-  metricCriteria = [
-    {
-      ...metricCriteria,
-      value: parseFloat(metricCriteria.value),
-    },
-  ]
+  // metricCriteria = [
+  //   {
+  //     ...metricCriteria,
+  //     value: parseFloat(metricCriteria.value),
+  //   },
+  // ]
 
   return JSON.stringify(
     {

@@ -3,34 +3,31 @@ import { Container, Form, Grid } from 'semantic-ui-react'
 import RestaurantIdsSelect from './RestaurantIdsSelect'
 import DateRangePicker from './DateRangePicker'
 import TimeRange from './TimeRange'
-import MetricFilter from "./MetricFilter"
+import Metrics from "./Metrics"
 import formatRequest from '../helpers/formatRequest'
 
-const FilterForm = () => {
+const FilterForm = ({metricDefinitions, metricOptions}) => {
   const [formData, setFormData] = useState({
     restaurantIds: [],
     dateRange: '',
     fromHour: '06:00 am',
     toHour: '05:00 am',
-    metricCriteria: {
-      metricCode: '',
-      compareType: '',
-      value: '',
-    },
+    metricCriteria: [
+      {
+        metricCode: '',
+        compareType: '',
+        value: '',
+      },
+      {
+        metricCode: '',
+        compareType: '',
+        value: '',
+      },
+    ],
   })
 
   const handleChange = (e, {name, value}) => {
     setFormData({...formData, [name]: value})
-  }
-
-  const handleMetricChange = (e, {name, value}) => {
-    setFormData({
-      ...formData,
-      metricCriteria: {
-        ...formData.metricCriteria,
-        [name]: value,
-      },
-    })
   }
 
   const filterTransactions = () => {
@@ -61,9 +58,12 @@ const FilterForm = () => {
             </Grid.Column>
 
             <Grid.Column width={8}>
-              <MetricFilter
+              <Metrics
+                metricDefinitions={metricDefinitions}
+                metricOptions={metricOptions}
                 metricCriteria={formData.metricCriteria}
-                onChange={handleMetricChange}
+                formData={formData}
+                setFormData={setFormData}
               />
             </Grid.Column>
           </Grid.Row>

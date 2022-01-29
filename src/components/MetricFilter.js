@@ -1,37 +1,7 @@
-import { useEffect, useState } from 'react'
 import { Button, Form } from 'semantic-ui-react'
 import { compareOptions } from '../helpers/dropdownOptions'
-import { URL_API } from '../config.js'
 
-const MetricFilter = ({metricCriteria, onChange}) => {
-
-  const [metricDefinitions, setMetricDefinitions] = useState([])
-
-  const getData = async (url = "") => {
-    const response = await fetch(url, {
-      method: "GET",
-      cache: "no-cache",
-    })
-    return response.json()
-  }
-
-  useEffect(() => {
-    getData(URL_API + "/Search/MetricDefinitions")
-      .then((defs) => {
-        setMetricDefinitions(defs)
-      })
-      .catch((error) => {
-        console.log("Error fetching metric definitions from API: " + error)
-      })
-  }, [])
-
-  const metricOptions = metricDefinitions.map((metric, index) => {
-    return {
-      key: index,
-      text: metric.alias,
-      value: metric.metricCode,
-    }
-  })
+const MetricFilter = ({metricDefinitions, metricOptions, metricCriteria, metricIndex, onChange}) => {
 
   return (
     <Form.Group widths="equal">
@@ -43,6 +13,7 @@ const MetricFilter = ({metricCriteria, onChange}) => {
         options={metricOptions}
         value={metricCriteria.metricCode}
         onChange={onChange}
+        metricIndex={metricIndex}
       />
       <Form.Select
         name="compareType"
@@ -52,6 +23,7 @@ const MetricFilter = ({metricCriteria, onChange}) => {
         options={compareOptions}
         value={metricCriteria.compareType}
         onChange={onChange}
+        metricIndex={metricIndex}
       />
       <Form.Input
         name="value"
@@ -60,6 +32,7 @@ const MetricFilter = ({metricCriteria, onChange}) => {
         placeholder=""
         value={metricCriteria.value}
         onChange={onChange}
+        metricIndex={metricIndex}
       />
       <Button.Group basic icon style={{border: 'none'}}>
         <Button compact type="button" icon="minus square outline" style={{padding: 0, border: 'none'}}/>

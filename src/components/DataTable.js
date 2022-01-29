@@ -3,7 +3,7 @@ import formatResponseData from '../helpers/formatResponseData'
 
 import responseData from '../response.json'
 
-const DataTable = () => {
+const DataTable = ({metricDefintions}) => {
 
   const [tableHeaders, tableData] = formatResponseData(responseData)
 
