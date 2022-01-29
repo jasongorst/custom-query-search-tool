@@ -2,11 +2,10 @@ import React, { useState } from 'react'
 import MetricFilter from './MetricFilter'
 
 const Metrics = ({metricDefinitions, metricOptions, metricCriteria, onChange}) => {
-  const [metricCount, setMetricCount] = useState(2)
+  const [metricCount, setMetricCount] = useState(1)
 
   const handleMetricChange = (e, {metricIndex, name, value}) => {
     let newMetricCriteria = []
-
     for (let i = 0; i < metricCount; i++) {
       newMetricCriteria.push((i === metricIndex) ? (
         {...metricCriteria[i], [name]: value}
@@ -14,7 +13,30 @@ const Metrics = ({metricDefinitions, metricOptions, metricCriteria, onChange}) =
         metricCriteria[i]
       ))
     }
+    onChange(newMetricCriteria)
+  }
 
+  const addMetric = () => {
+    setMetricCount(metricCount + 1)
+    onChange([
+      ...metricCriteria,
+      {
+        metricCode: '',
+        compareType: '',
+        value: '',
+      },
+    ])
+  }
+
+  const dropMetric = (e, {metricIndex}) => {
+    setMetricCount(metricCount - 1)
+
+    let newMetricCriteria = []
+    for (let i = 0; i < metricCount; i++) {
+      if (i !== metricIndex) {
+        newMetricCriteria.push(metricCriteria[i])
+      }
+    }
     onChange(newMetricCriteria)
   }
 
@@ -29,6 +51,8 @@ const Metrics = ({metricDefinitions, metricOptions, metricCriteria, onChange}) =
         metricCriteria={metricCriteria[i]}
         metricCount={metricCount}
         onChange={handleMetricChange}
+        addMetric={addMetric}
+        dropMetric={dropMetric}
       />)
   }
 

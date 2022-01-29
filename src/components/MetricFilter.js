@@ -1,7 +1,13 @@
 import { Button, Form } from 'semantic-ui-react'
 import { compareOptions } from '../helpers/dropdownOptions'
 
-const MetricFilter = ({metricDefinitions, metricOptions, metricCriteria, metricIndex, onChange}) => {
+const MetricFilter = ({
+                        metricDefinitions, metricOptions, metricCriteria, metricIndex,
+                        metricCount, onChange, addMetric, dropMetric,
+                      }) => {
+
+  const showMinusButton = (metricCount > 1)
+  const showPlusButton = (metricIndex === (metricCount - 1)) && (metricCount < 5)
 
   return (
     <Form.Group widths="equal">
@@ -35,8 +41,21 @@ const MetricFilter = ({metricDefinitions, metricOptions, metricCriteria, metricI
         metricIndex={metricIndex}
       />
       <Button.Group basic icon style={{border: 'none'}}>
-        <Button compact type="button" icon="minus square outline" style={{padding: 0, border: 'none'}}/>
-        <Button compact type="button" icon="plus square outline" style={{padding: 0, border: 'none'}}/>
+        <Button
+          compact
+          type="button"
+          icon="minus square outline"
+          style={{padding: 0, border: 'none', visibility: (showMinusButton ? 'visible' : 'hidden')}}
+          metricIndex={metricIndex}
+          onClick={dropMetric}
+        />
+        <Button
+          compact
+          type="button"
+          icon="plus square outline"
+          style={{padding: 0, border: 'none', visibility: (showPlusButton ? 'visible' : 'hidden')}}
+          onClick={addMetric}
+        />
       </Button.Group>
     </Form.Group>
   )

@@ -18,12 +18,7 @@ const FilterForm = ({metricDefinitions, metricOptions}) => {
         compareType: '',
         value: '',
       },
-      {
-        metricCode: '',
-        compareType: '',
-        value: '',
-      },
-    ],
+    ]
   })
 
   const handleChange = (e, {name, value}) => {
