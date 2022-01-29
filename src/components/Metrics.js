@@ -1,44 +1,32 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import MetricFilter from './MetricFilter'
 
-const Metrics = ({metricDefinitions, metricOptions, formData, setFormData}) => {
+const Metrics = ({metricDefinitions, metricOptions, metricCriteria, onChange}) => {
   const [metricCount, setMetricCount] = useState(2)
 
-  const changeMetricCriteria = (metricIndex, name, value) => {
-    var newMetricCriteria = []
+  const handleMetricChange = (e, {metricIndex, name, value}) => {
+    let newMetricCriteria = []
 
-    for (var i = 0; i < metricCount; i++) {
-      if (i === metricIndex) {
-        newMetricCriteria.push(
-          {
-            ...formData.metricCriteria[i],
-            [name]: value,
-          },
-        )
-      } else {
-        newMetricCriteria.push(formData.metricCriteria[i])
-      }
+    for (let i = 0; i < metricCount; i++) {
+      newMetricCriteria.push((i === metricIndex) ? (
+        {...metricCriteria[i], [name]: value}
+      ) : (
+        metricCriteria[i]
+      ))
     }
 
-    return newMetricCriteria
+    onChange(newMetricCriteria)
   }
 
-  const handleMetricChange = (e, {metricIndex, name, value}) => {
-    setFormData({
-      ...formData,
-      metricCriteria: changeMetricCriteria(metricIndex, name, value),
-    })
-  }
-
-  var metricFilters = []
-  for (var i = 0; i < metricCount; i++) {
+  let metricFilters = []
+  for (let i = 0; i < metricCount; i++) {
     metricFilters.push(
       <MetricFilter
         key={i}
         metricIndex={i}
         metricDefinitions={metricDefinitions}
         metricOptions={metricOptions}
-        metricCriteria={formData.metricCriteria[i]}
+        metricCriteria={metricCriteria[i]}
         metricCount={metricCount}
         onChange={handleMetricChange}
       />)

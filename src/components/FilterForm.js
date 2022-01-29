@@ -30,6 +30,13 @@ const FilterForm = ({metricDefinitions, metricOptions}) => {
     setFormData({...formData, [name]: value})
   }
 
+  const handleMetricsChange = (metricCriteria) => {
+    setFormData({
+      ...formData,
+      metricCriteria: metricCriteria,
+    })
+  }
+
   const filterTransactions = () => {
     console.log(formatRequest(formData))
   }
@@ -62,8 +69,7 @@ const FilterForm = ({metricDefinitions, metricOptions}) => {
                 metricDefinitions={metricDefinitions}
                 metricOptions={metricOptions}
                 metricCriteria={formData.metricCriteria}
-                formData={formData}
-                setFormData={setFormData}
+                onChange={handleMetricsChange}
               />
             </Grid.Column>
           </Grid.Row>
