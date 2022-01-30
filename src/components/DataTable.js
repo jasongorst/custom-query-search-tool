@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react'
-import { Table } from 'semantic-ui-react'
+import React, { useEffect, useState } from 'react'
+import { Container, Dropdown, Grid, Pagination, Table } from 'semantic-ui-react'
 import formatResponseData from '../helpers/formatResponseData'
 import { URL_API } from '../config'
 
 const DataTable = ({columnFormats, request}) => {
   const [headers, setHeaders] = useState([])
   const [body, setBody] = useState([])
+  const [page, setPage] = useState(1)
+  const [perPage, setPerPage] = useState(25)
 
   const createHeaders = (tableHeaders) => {
     return tableHeaders.map((header, hdridx) => (
@@ -47,18 +49,60 @@ const DataTable = ({columnFormats, request}) => {
       })
   }, [request, columnFormats])
 
-  return (
-    <Table striped>
-      <Table.Header>
-        <Table.Row key={'headers'}>
-          {headers}
-        </Table.Row>
-      </Table.Header>
+  const perPageValues = [25, 50, 100]
+  const perPageOptions = perPageValues.map((value) => (
+    {
+      key: value,
+      text: value.toString(),
+      value: value,
+    }
+  ))
 
-      <Table.Body>
-        {body}
-      </Table.Body>
-    </Table>
+  const handlePageChange = (e, {activePage}) => {
+    setPage(activePage)
+  }
+
+  const handlePerPageChange = (e, {value}) => {
+    setPerPage(value)
+  }
+
+  return (
+    <>
+      {body.length > 0 && <Container>
+        <Grid>
+          <Grid.Column width={8}>
+            <Pagination
+              boundaryRange={1}
+              siblingRange={2}
+              firstItem={null}
+              lastItem={null}
+              totalPages={Math.ceil(body.length / perPage)}
+              activePage={page}
+              onPageChange={handlePageChange}
+            />
+          </Grid.Column>
+          <Grid.Column>
+            <Dropdown
+              placeholder="Items Per Page&hellip;"
+              selection
+              options={perPageOptions}
+              onChange={handlePerPageChange}
+            />
+          </Grid.Column>
+        </Grid>
+        <Table striped>
+          <Table.Header>
+            <Table.Row key={'headers'}>
+              {headers}
+            </Table.Row>
+          </Table.Header>
+
+          <Table.Body>
+            {body.slice((page - 1) * perPage, page * perPage)}
+          </Table.Body>
+        </Table>
+      </Container>}
+    </>
   )
 }
 
