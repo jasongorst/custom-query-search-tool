@@ -3,11 +3,9 @@ import { Table } from 'semantic-ui-react'
 import formatResponseData from '../helpers/formatResponseData'
 import { URL_API } from '../config'
 
-const DataTable = ({metricDefintions, request}) => {
+const DataTable = ({columnFormats, request}) => {
   const [headers, setHeaders] = useState([])
   const [body, setBody] = useState([])
-
-  console.log(request)
 
   const createHeaders = (tableHeaders) => {
     return tableHeaders.map((header, hdridx) => {
@@ -46,16 +44,14 @@ const DataTable = ({metricDefintions, request}) => {
   useEffect(() => {
     getTableData(URL_API + "/Search/Query", request)
       .then((data) => {
-        console.log(data)
-        const [tableHeaders, tableData] = formatResponseData(data)
-        console.log(tableHeaders, tableData)
+        const [tableHeaders, tableData] = formatResponseData(data, columnFormats)
         setHeaders(createHeaders(tableHeaders))
         setBody(createBody(tableData))
       })
       .catch((error) => {
-        console.log("Error fetching transaction data from API: " + error)
+        console.error("Error fetching transaction data from API: " + error)
       })
-  }, [request])
+  }, [request, columnFormats])
 
   return (
     <Table striped>

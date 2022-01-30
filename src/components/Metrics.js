@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import MetricFilter from './MetricFilter'
 
-const Metrics = ({metricDefinitions, metricOptions, metricCriteria, onChange}) => {
+const Metrics = ({columnFormats, metricOptions, metricCriteria, onChange}) => {
   const [metricCount, setMetricCount] = useState(1)
 
-  const handleMetricChange = (e, {metricIndex, name, value}) => {
+  const handleMetricChange = (e, {metricindex, name, value}) => {
     const newMetricCriteria = metricCriteria.map((criteria, index) => (
-      index === metricIndex ? {...criteria, [name]: value} : criteria
+      index === metricindex ? {...criteria, [name]: value} : criteria
     ))
 
     onChange(newMetricCriteria)
@@ -26,10 +26,10 @@ const Metrics = ({metricDefinitions, metricOptions, metricCriteria, onChange}) =
     onChange(newMetricCriteria)
   }
 
-  const dropMetric = (e, {metricIndex}) => {
+  const dropMetric = (e, {metricindex}) => {
     setMetricCount(metricCount - 1)
 
-    const newMetricCriteria = metricCriteria.filter((criteria, index) => index !== metricIndex)
+    const newMetricCriteria = metricCriteria.filter((criteria, index) => index !== metricindex)
     onChange(newMetricCriteria)
   }
 
@@ -38,8 +38,8 @@ const Metrics = ({metricDefinitions, metricOptions, metricCriteria, onChange}) =
     metricFilters.push(
       <MetricFilter
         key={i}
-        metricIndex={i}
-        metricDefinitions={metricDefinitions}
+        metricindex={i}
+        columnFormats={columnFormats}
         metricOptions={metricOptions}
         metricCriteria={metricCriteria[i]}
         metricCount={metricCount}

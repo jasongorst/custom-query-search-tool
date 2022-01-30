@@ -6,7 +6,7 @@ import TimeRange from './TimeRange'
 import Metrics from "./Metrics"
 import formatRequest from '../helpers/formatRequest'
 
-const FilterForm = ({metricDefinitions, metricOptions, setRequest}) => {
+const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
   const [formData, setFormData] = useState({
     restaurantIds: [],
     dateRange: '',
@@ -61,7 +61,7 @@ const FilterForm = ({metricDefinitions, metricOptions, setRequest}) => {
 
             <Grid.Column width={8}>
               <Metrics
-                metricDefinitions={metricDefinitions}
+                columnFormats={columnFormats}
                 metricOptions={metricOptions}
                 metricCriteria={formData.metricCriteria}
                 onChange={handleMetricsChange}

@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react'
 import { Container, Grid } from 'semantic-ui-react'
 import FilterForm from './components/FilterForm'
 import DataTable from './components/DataTable'
-import { URL_API } from './config'
+import { defaultColumns, URL_API } from './config'
+
 
 const App = () => {
   const [metricDefinitions, setMetricDefinitions] = useState([])
@@ -23,7 +24,7 @@ const App = () => {
         setMetricDefinitions(defs)
       })
       .catch((error) => {
-        console.log("Error fetching metric definitions from API: " + error)
+        console.error("Error fetching metric definitions from API: " + error)
       })
   }, [])
 
@@ -35,6 +36,8 @@ const App = () => {
     }
   })
 
+  const columnFormats = defaultColumns.concat(metricDefinitions)
+
   return (
     <div className="App">
       <Container style={{margin: 50}}>
@@ -42,16 +45,16 @@ const App = () => {
           <Grid.Row columns={1}>
             <Grid.Column>
               <FilterForm
-                metricDefinitions={metricDefinitions}
+                columnFormats={columnFormats}
                 metricOptions={metricOptions}
                 setRequest={setRequest}
               />
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row columns={1} style={{"overflow-x": "scroll"}}>
+          <Grid.Row columns={1} style={{overflowX: "scroll"}}>
             <Grid.Column>
               <DataTable
-                metricDefinitions={metricDefinitions}
+                columnFormats={columnFormats}
                 request={request}
               />
             </Grid.Column>
