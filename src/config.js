@@ -9,25 +9,25 @@ export const defaultColumns = [
   {
     metricCode: "restaurantId",
     alias: "Restaurant ID",
-    datatype: "Number",
+    dataType: "Number",
     decimalPlaces: 0,
   },
   {
     metricCode: "busDt",
     alias: "Transaction Date",
-    datatype: "Date",
+    dataType: "Date",
     decimalPlaces: 0,
   },
   {
     metricCode: "orderTime",
     alias: "Transaction Time",
-    datatype: "Time",
+    dataType: "Time",
     decimalPlaces: 0,
   },
   {
     metricCode: "orderNumber",
     alias: "Ticket Number",
-    datatype: "Number",
+    dataType: "Number",
     decimalPlaces: 0,
   },
 ]

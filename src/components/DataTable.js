@@ -10,7 +10,7 @@ const DataTable = ({columnFormats, request}) => {
   const createHeaders = (tableHeaders) => {
     return tableHeaders.map((header, hdridx) => {
       return (
-        <Table.HeaderCell key={`headers-${hdridx}`} singleLine>{header}</Table.HeaderCell>
+        <Table.HeaderCell key={`headers-${hdridx}`}>{header}</Table.HeaderCell>
       )
     })
   }

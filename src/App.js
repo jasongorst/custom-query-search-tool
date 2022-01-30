@@ -51,7 +51,7 @@ const App = () => {
               />
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row columns={1} style={{overflowX: "scroll"}}>
+          <Grid.Row columns={1} style={{overflowX: "auto", overflowY: "hidden"}}>
             <Grid.Column>
               <DataTable
                 columnFormats={columnFormats}
