@@ -8,25 +8,19 @@ const DataTable = ({columnFormats, request}) => {
   const [body, setBody] = useState([])
 
   const createHeaders = (tableHeaders) => {
-    return tableHeaders.map((header, hdridx) => {
-      return (
-        <Table.HeaderCell key={`headers-${hdridx}`}>{header}</Table.HeaderCell>
-      )
-    })
+    return tableHeaders.map((header, hdridx) => (
+      <Table.HeaderCell key={`headers-${hdridx}`}>{header}</Table.HeaderCell>
+    ))
   }
 
   const createBody = (tableData) => {
-    return tableData.map((row, rowidx) => {
-      return (
-        <Table.Row key={rowidx}>
-          {row.map((cell, colidx) => {
-            return (
-              <Table.Cell key={`${rowidx}-${colidx}`} singleLine>{cell}</Table.Cell>
-            )
-          })}
-        </Table.Row>
-      )
-    })
+    return tableData.map((row, rowidx) => (
+      <Table.Row key={rowidx}>
+        {row.map((cell, colidx) => (
+          <Table.Cell key={`${rowidx}-${colidx}`} singleLine>{cell}</Table.Cell>
+        ))}
+      </Table.Row>
+    ))
   }
 
   const getTableData = async (url = "", req) => {

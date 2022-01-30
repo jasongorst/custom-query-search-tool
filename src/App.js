@@ -5,7 +5,6 @@ import FilterForm from './components/FilterForm'
 import DataTable from './components/DataTable'
 import { defaultColumns, URL_API } from './config'
 
-
 const App = () => {
   const [metricDefinitions, setMetricDefinitions] = useState([])
   const [request, setRequest] = useState([])
