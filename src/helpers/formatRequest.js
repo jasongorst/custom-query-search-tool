@@ -5,7 +5,7 @@ const formatRequest = ({restaurantIds, dateRange, fromHour, toHour, metricCriter
   const TIME_FORMAT = "hh:mm a"
   const HOUR_FORMAT = "H"
 
-  var [fromDate, toDate] = dateRange.split(' - ').map((date) => moment(date, DATE_FORMAT).toISOString())
+  const [fromDate, toDate] = dateRange.split(' - ').map((date) => moment(date, DATE_FORMAT).toISOString())
 
   fromHour = parseInt(moment(fromHour, TIME_FORMAT).format(HOUR_FORMAT))
   toHour = parseInt(moment(toHour, TIME_FORMAT).format(HOUR_FORMAT))
@@ -15,10 +15,10 @@ const formatRequest = ({restaurantIds, dateRange, fromHour, toHour, metricCriter
     toHour += 24
   }
 
-  metricCriteria = metricCriteria.map((mc) => Object(
+  metricCriteria = metricCriteria.map((criteria) => Object(
     {
-      ...mc,
-      value: parseFloat(mc.value),
+      ...criteria,
+      value: parseFloat(criteria.value),
     },
   ))
 
