@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Message, Table } from 'semantic-ui-react'
+import { Container, Dimmer, Icon, Message, Table } from 'semantic-ui-react'
 import DataPaginate from './DataPaginate'
 import formatResponseData from '../helpers/formatResponseData'
 import { URL_API } from '../config'
@@ -9,6 +9,7 @@ const DataTable = ({columnFormats, request}) => {
   const [body, setBody] = useState([])
   const [page, setPage] = useState(1)
   const [perPage, setPerPage] = useState(25)
+  const [loading, setLoading] = useState(false)
 
   const createHeaders = (tableHeaders) => {
     return tableHeaders.map((header, hdridx) => (
@@ -39,15 +40,22 @@ const DataTable = ({columnFormats, request}) => {
   }
 
   useEffect(() => {
-    getTableData(URL_API + "/Search/Query", request)
-      .then((data) => {
-        const [tableHeaders, tableData] = formatResponseData(data, columnFormats)
-        setHeaders(createHeaders(tableHeaders))
-        setBody(createBody(tableData))
-      })
-      .catch((error) => {
-        console.error("Error fetching transaction data from API: " + error)
-      })
+    if (request) {
+      setLoading(true)
+
+      getTableData(URL_API + "/Search/Query", request)
+        .then((data) => {
+          const [tableHeaders, tableData] = formatResponseData(data, columnFormats)
+          setHeaders(createHeaders(tableHeaders))
+          setBody(createBody(tableData))
+        })
+        .catch((error) => {
+          console.error("Error fetching transaction data from API: " + error)
+        })
+        .finally(() => {
+          setLoading(false)
+        })
+    }
   }, [request, columnFormats])
 
   const handlePageChange = (e, {activePage}) => {
@@ -60,7 +68,14 @@ const DataTable = ({columnFormats, request}) => {
 
   return (
     <Container>
-      {body.length > 0 && <>
+      {loading && <Message icon>
+        <Icon name="spinner" loading/>
+        <Message.Content>
+          <Message.Header>One Moment</Message.Header>
+          We are fetching that transaction data.
+        </Message.Content>
+      </Message>}
+      {body.length > 0 && <Dimmer.Dimmable as={Container} blurring dimmed={loading}>
         <DataPaginate
           rows={body.length}
           page={page}
@@ -79,14 +94,13 @@ const DataTable = ({columnFormats, request}) => {
             {body.slice((page - 1) * perPage, page * perPage)}
           </Table.Body>
         </Table>
-      </>}
-      {request && body.length === 0 && <Message info>
-        <Message.Header>
-          No Transactions Found
-        </Message.Header>
-        <p>
+      </Dimmer.Dimmable>}
+      {request && body.length === 0 && !loading && <Message info icon>
+        <Icon name="x icon"/>
+        <Message.Content>
+          <Message.Header>No Transactions Found</Message.Header>
           Try relaxing your filter requirements.
-        </p>
+        </Message.Content>
       </Message>
       }
     </Container>
