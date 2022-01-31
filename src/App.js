@@ -7,7 +7,7 @@ import { defaultColumns, URL_API } from './config'
 
 const App = () => {
   const [metricDefinitions, setMetricDefinitions] = useState([])
-  const [request, setRequest] = useState([])
+  const [request, setRequest] = useState()
 
   const getData = async (url = "") => {
     const response = await fetch(url, {
@@ -40,7 +40,7 @@ const App = () => {
   return (
     <div className="App">
       <Container style={{margin: 50}}>
-        <Grid>
+        <Grid celled="internally">
           <Grid.Row columns={1}>
             <Grid.Column>
               <FilterForm
