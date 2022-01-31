@@ -7,10 +7,6 @@ const formatRequest = ({restaurantIds, dateRange, fromHour, toHour, metricCriter
 
   const [fromDate, toDate] = dateRange.split(' - ').map((date) => moment(date, DATE_FORMAT).toISOString())
 
-  const getValueFormat = (metricCode) => {
-    return columnFormats.find((col) => col.metricCode === metricCode)
-  }
-
   fromHour = parseInt(moment(fromHour, TIME_FORMAT).format(HOUR_FORMAT))
   toHour = parseInt(moment(toHour, TIME_FORMAT).format(HOUR_FORMAT))
 
@@ -19,12 +15,26 @@ const formatRequest = ({restaurantIds, dateRange, fromHour, toHour, metricCriter
     toHour += 24
   }
 
-  metricCriteria = metricCriteria.map((criteria) => Object(
-    {
+  const getValueFormat = (metricCode) => {
+    return columnFormats.find((col) => col.metricCode === metricCode)
+  }
+
+  // format value properties in metricCriteria
+  metricCriteria = metricCriteria.map((criteria) => {
+    const format = getValueFormat(criteria.metricCode)
+    let value = parseFloat(criteria.value)
+
+    if (format.dataType === "Percent") {
+      value = value / 100
+    }
+
+    value = parseFloat(value.toFixed(format.decimalPlaces))
+
+    return {
       ...criteria,
-      value: parseFloat(criteria.value),
-    },
-  ))
+      value: value,
+    }
+  })
 
   return (
     {

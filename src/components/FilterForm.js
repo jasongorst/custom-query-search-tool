@@ -33,7 +33,8 @@ const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
   }
 
   const filterTransactions = () => {
-    setRequest(formatRequest(formData, columnFormats))
+    const formattedRequest = formatRequest(formData, columnFormats)
+    setRequest(formattedRequest)
   }
 
   return (
@@ -69,18 +70,15 @@ const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row columns={3}>
-            <Grid.Column/>
+          <Grid.Row centered columns={3}>
             <Grid.Column>
               <Form.Button
                 fluid
                 primary
                 type="submit"
-              >
-                Filter Transactions
-              </Form.Button>
+                content="Filter Transactions"
+              />
             </Grid.Column>
-            <Grid.Column/>
           </Grid.Row>
         </Grid>
       </Form>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Dropdown, Grid, Pagination, Table } from 'semantic-ui-react'
+import { Container, Form, Grid, Pagination, Table } from 'semantic-ui-react'
 import formatResponseData from '../helpers/formatResponseData'
 import { URL_API } from '../config'
 
@@ -70,7 +70,8 @@ const DataTable = ({columnFormats, request}) => {
     <>
       {body.length > 0 && <Container>
         <Grid>
-          <Grid.Column width={8}>
+          <Grid.Column width={13}>
+            <br/>
             <Pagination
               boundaryRange={1}
               siblingRange={2}
@@ -81,13 +82,19 @@ const DataTable = ({columnFormats, request}) => {
               onPageChange={handlePageChange}
             />
           </Grid.Column>
-          <Grid.Column>
-            <Dropdown
-              placeholder="Items Per Page&hellip;"
-              selection
-              options={perPageOptions}
-              onChange={handlePerPageChange}
-            />
+          <Grid.Column width={3}>
+            <Form>
+              <Form.Field>
+                <Form.Select
+                  name="perPage"
+                  label="Items Per Page"
+                  fluid
+                  placeholder="Items Per Page&hellip;"
+                  options={perPageOptions}
+                  onChange={handlePerPageChange}
+                />
+              </Form.Field>
+            </Form>
           </Grid.Column>
         </Grid>
         <Table striped>

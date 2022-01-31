@@ -33,21 +33,19 @@ const Metrics = ({columnFormats, metricOptions, metricCriteria, onChange}) => {
     onChange(newMetricCriteria)
   }
 
-  let metricFilters = []
-  for (let i = 0; i < metricCount; i++) {
-    metricFilters.push(
-      <MetricFilter
-        key={i}
-        metricindex={i}
-        columnFormats={columnFormats}
-        metricOptions={metricOptions}
-        metricCriteria={metricCriteria[i]}
-        metricCount={metricCount}
-        onChange={handleMetricChange}
-        addMetric={addMetric}
-        dropMetric={dropMetric}
-      />)
-  }
+  const metricFilters = metricCriteria.map((criteria, index) => (
+    <MetricFilter
+      key={index}
+      metricindex={index}
+      columnFormats={columnFormats}
+      metricOptions={metricOptions}
+      metricCriteria={metricCriteria[index]}
+      metricCount={metricCount}
+      onChange={handleMetricChange}
+      addMetric={addMetric}
+      dropMetric={dropMetric}
+    />
+  ))
 
   return (
     <div>
