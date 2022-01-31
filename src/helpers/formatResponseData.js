@@ -2,8 +2,8 @@ import _ from 'lodash'
 import moment from 'moment'
 
 const formatResponseData = (data, columnFormats) => {
-  const formatValue = (value, datatype, decimalPlaces) => {
-    switch (datatype) {
+  const formatValue = (value, dataType, decimalPlaces) => {
+    switch (dataType) {
       case "Number":
         return new Intl.NumberFormat('en-US',
           {useGrouping: false, minimumFractionDigits: decimalPlaces, maximumFractionDigits: decimalPlaces})

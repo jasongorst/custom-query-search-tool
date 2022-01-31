@@ -1,4 +1,5 @@
-import { Button, Form } from 'semantic-ui-react'
+import React from 'react'
+import { Button, Form, Input } from 'semantic-ui-react'
 import { compareOptions } from '../helpers/dropdownOptions'
 
 const MetricFilter = ({
@@ -8,6 +9,27 @@ const MetricFilter = ({
 
   const showMinusButton = (metricCount > 1)
   const showPlusButton = (metricindex === (metricCount - 1)) && (metricCount < 5)
+
+  const getValueFormat = () => {
+    return columnFormats.find((col) => col.metricCode === metricCriteria.metricCode)
+  }
+
+  let label = null
+  let labelPosition = "left"
+
+  if (getValueFormat()) {
+    switch (getValueFormat().dataType) {
+      case "Money":
+        label = {basic: true, content: "$"}
+        break
+      case "Percent":
+        label = {basic: true, content: "%"}
+        labelPosition = "right"
+        break
+      case "Number":
+      default:
+    }
+  }
 
   return (
     <Form.Group widths="equal">
@@ -31,15 +53,19 @@ const MetricFilter = ({
         onChange={onChange}
         metricindex={metricindex}
       />
-      <Form.Input
-        name="value"
-        fluid
-        label="Value"
-        placeholder=""
-        value={metricCriteria.value}
-        onChange={onChange}
-        metricindex={metricindex}
-      />
+      <Form.Field>
+        <label>Value</label>
+        <Input
+          label={label}
+          labelPosition={labelPosition}
+          name="value"
+          fluid
+          placeholder=""
+          value={metricCriteria.value}
+          onChange={onChange}
+          metricindex={metricindex}
+        />
+      </Form.Field>
       <Button.Group basic icon style={{border: 'none'}}>
         <Button
           compact

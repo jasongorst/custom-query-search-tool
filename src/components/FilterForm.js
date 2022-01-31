@@ -33,7 +33,7 @@ const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
   }
 
   const filterTransactions = () => {
-    setRequest(formatRequest(formData))
+    setRequest(formatRequest(formData, columnFormats))
   }
 
   return (

@@ -1,11 +1,15 @@
 import moment from 'moment'
 
-const formatRequest = ({restaurantIds, dateRange, fromHour, toHour, metricCriteria}) => {
+const formatRequest = ({restaurantIds, dateRange, fromHour, toHour, metricCriteria}, columnFormats) => {
   const DATE_FORMAT = "MM/DD/YYYY"
   const TIME_FORMAT = "hh:mm a"
   const HOUR_FORMAT = "H"
 
   const [fromDate, toDate] = dateRange.split(' - ').map((date) => moment(date, DATE_FORMAT).toISOString())
+
+  const getValueFormat = (metricCode) => {
+    return columnFormats.find((col) => col.metricCode === metricCode)
+  }
 
   fromHour = parseInt(moment(fromHour, TIME_FORMAT).format(HOUR_FORMAT))
   toHour = parseInt(moment(toHour, TIME_FORMAT).format(HOUR_FORMAT))
