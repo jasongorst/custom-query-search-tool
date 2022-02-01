@@ -1,4 +1,3 @@
-import 'semantic-ui-css/semantic.min.css'
 import { useEffect, useState } from 'react'
 import { Container, Grid } from 'semantic-ui-react'
 import FilterForm from './components/FilterForm'
