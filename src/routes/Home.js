@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 const Home = () => {
   return (
@@ -16,6 +16,8 @@ const Home = () => {
           <li><Link to="/about">About</Link></li>
         </ul>
       </nav>
+
+      <Outlet/>
     </div>
   )
 }
