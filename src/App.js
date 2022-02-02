@@ -1,66 +1,25 @@
-import { useEffect, useState } from 'react'
-import { Container, Grid } from 'semantic-ui-react'
-import FilterForm from './components/FilterForm'
-import DataTable from './components/DataTable'
-import { defaultColumns, URL_API } from './config'
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Layout from './routes/Layout'
+import Home from './routes/Home'
+import QueryTool from './routes/QueryTool'
+import PageLayout from './routes/PageLayout'
+import About from './routes/About'
+import NotFound from './routes/NotFound'
 
 const App = () => {
-  const [metricDefinitions, setMetricDefinitions] = useState([])
-  const [request, setRequest] = useState()
-
-  const getData = async (url = "") => {
-    const response = await fetch(url, {
-      method: "GET",
-      cache: "no-cache",
-    })
-    return response.json()
-  }
-
-  useEffect(() => {
-    getData(URL_API + "/Search/MetricDefinitions")
-      .then((defs) => {
-        setMetricDefinitions(defs)
-      })
-      .catch((error) => {
-        console.error("Error fetching metric definitions from API: " + error)
-      })
-  }, [])
-
-  const metricOptions = metricDefinitions.map((metric, index) => {
-    return {
-      key: index,
-      text: metric.alias,
-      value: metric.metricCode,
-    }
-  })
-
-  const columnFormats = defaultColumns.concat(metricDefinitions)
-
   return (
-    <div className="App">
-      <Container style={{margin: 50}}>
-        <Grid celled="internally">
-          <Grid.Row columns={1}>
-            <Grid.Column>
-              <FilterForm
-                columnFormats={columnFormats}
-                metricOptions={metricOptions}
-                setRequest={setRequest}
-              />
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row columns={1} style={{overflowX: "auto", overflowY: "hidden"}}>
-            <Grid.Column>
-              <DataTable
-                columnFormats={columnFormats}
-                request={request}
-              />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Container>
-    </div>
-  );
+    <Routes>
+      <Route path="/" element={<Layout/>}>
+        <Route index element={<Home/>}/>
+        <Route path="app" element={<QueryTool/>}/>
+        <Route element={<PageLayout/>}>
+          <Route path="about" element={<About/>}/>
+          <Route path="*" element={<NotFound/>}/>
+        </Route>
+      </Route>
+    </Routes>
+  )
 }
 
 export default App

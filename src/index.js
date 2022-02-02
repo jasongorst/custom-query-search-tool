@@ -4,12 +4,12 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 import 'semantic-ui-css/semantic.min.css'
-import MainRouter from './routes/MainRouter'
+import App from './App'
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <MainRouter/>
+      <App/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),
