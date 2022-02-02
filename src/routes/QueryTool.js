@@ -49,8 +49,8 @@ const QueryTool = () => {
               />
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row columns={1} style={{overflowX: "auto", overflowY: "hidden"}}>
-            <Grid.Column>
+          <Grid.Row columns={1}>
+            <Grid.Column style={{overflowX: "auto", overflowY: "hidden"}}>
               <DataTable
                 columnFormats={columnFormats}
                 request={request}

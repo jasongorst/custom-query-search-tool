@@ -5,11 +5,13 @@ import formatResponseData from '../helpers/formatResponseData'
 import { URL_API } from '../config'
 
 const DataTable = ({columnFormats, request}) => {
+  const [loading, setLoading] = useState(false)
+
   const [headers, setHeaders] = useState([])
   const [body, setBody] = useState([])
+
   const [page, setPage] = useState(1)
   const [perPage, setPerPage] = useState(25)
-  const [loading, setLoading] = useState(false)
 
   const createHeaders = (tableHeaders) => {
     return tableHeaders.map((header, hdridx) => (
@@ -68,6 +70,7 @@ const DataTable = ({columnFormats, request}) => {
 
   return (
     <Container>
+
       {loading && <Message icon>
         <Icon name="spinner" loading/>
         <Message.Content>
@@ -75,6 +78,7 @@ const DataTable = ({columnFormats, request}) => {
           We are fetching that transaction data.
         </Message.Content>
       </Message>}
+
       {body.length > 0 && <Dimmer.Dimmable as={Container} blurring dimmed={loading}>
         <DataPaginate
           rows={body.length}
@@ -95,14 +99,15 @@ const DataTable = ({columnFormats, request}) => {
           </Table.Body>
         </Table>
       </Dimmer.Dimmable>}
+
       {request && body.length === 0 && !loading && <Message info icon>
         <Icon name="x icon"/>
         <Message.Content>
           <Message.Header>No Transactions Found</Message.Header>
           Try relaxing your filter requirements.
         </Message.Content>
-      </Message>
-      }
+      </Message>}
+
     </Container>
   )
 }
