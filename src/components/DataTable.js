@@ -50,6 +50,7 @@ const DataTable = ({columnFormats, request}) => {
           const [tableHeaders, tableData] = formatResponseData(data, columnFormats)
           setHeaders(createHeaders(tableHeaders))
           setBody(createBody(tableData))
+          setPage(1)
         })
         .catch((error) => {
           console.error("Error fetching transaction data from API: " + error)
@@ -65,6 +66,7 @@ const DataTable = ({columnFormats, request}) => {
   }
 
   const handlePerPageChange = (e, {value}) => {
+    setPage(1)
     setPerPage(value)
   }
 
