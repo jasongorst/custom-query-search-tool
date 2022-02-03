@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Container, Dimmer, Icon, Message, Table } from 'semantic-ui-react'
 import DataPaginate from './DataPaginate'
 import formatResponseData from '../helpers/formatResponseData'
+import useQueryParam from "../helpers/useQueryParam"
 import { URL_API } from '../config'
 
 const DataTable = ({columnFormats, request}) => {
@@ -10,8 +11,13 @@ const DataTable = ({columnFormats, request}) => {
   const [headers, setHeaders] = useState([])
   const [body, setBody] = useState([])
 
-  const [page, setPage] = useState(1)
-  const [perPage, setPerPage] = useState(25)
+  // const [perPage, setPerPage] = useState(20)
+  const perPage = 20
+
+  let [page, setPage] = useQueryParam("page")
+  if (!page) {
+    page = 1
+  }
 
   const createHeaders = (tableHeaders) => {
     return tableHeaders.map((header, hdridx) => (
@@ -50,7 +56,6 @@ const DataTable = ({columnFormats, request}) => {
           const [tableHeaders, tableData] = formatResponseData(data, columnFormats)
           setHeaders(createHeaders(tableHeaders))
           setBody(createBody(tableData))
-          setPage(1)
         })
         .catch((error) => {
           console.error("Error fetching transaction data from API: " + error)
@@ -65,10 +70,10 @@ const DataTable = ({columnFormats, request}) => {
     setPage(activePage)
   }
 
-  const handlePerPageChange = (e, {value}) => {
-    setPage(1)
-    setPerPage(value)
-  }
+  // const handlePerPageChange = (e, {value}) => {
+  //   setPage(1)
+  //   setPerPage(value)
+  // }
 
   return (
     <Container>
@@ -87,7 +92,7 @@ const DataTable = ({columnFormats, request}) => {
           page={page}
           perPage={perPage}
           handlePageChange={handlePageChange}
-          handlePerPageChange={handlePerPageChange}
+          // handlePerPageChange={handlePerPageChange}
         />
         <Table striped>
           <Table.Header>
