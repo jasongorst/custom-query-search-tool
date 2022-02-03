@@ -1,9 +1,6 @@
-import React, { useState } from 'react'
 import MetricFilter from './MetricFilter'
 
 const Metrics = ({columnFormats, metricOptions, metricCriteria, onChange}) => {
-  const [metricCount, setMetricCount] = useState(1)
-
   const handleMetricChange = (e, {metricindex, name, value}) => {
     const newMetricCriteria = metricCriteria.map((criteria, index) => (
       index === metricindex ? {...criteria, [name]: value} : criteria
@@ -13,8 +10,6 @@ const Metrics = ({columnFormats, metricOptions, metricCriteria, onChange}) => {
   }
 
   const addMetric = () => {
-    setMetricCount(metricCount + 1)
-
     const newMetricCriteria = [
       ...metricCriteria,
       {
@@ -27,8 +22,6 @@ const Metrics = ({columnFormats, metricOptions, metricCriteria, onChange}) => {
   }
 
   const dropMetric = (e, {metricindex}) => {
-    setMetricCount(metricCount - 1)
-
     const newMetricCriteria = metricCriteria.filter((criteria, index) => index !== metricindex)
     onChange(newMetricCriteria)
   }
@@ -40,7 +33,7 @@ const Metrics = ({columnFormats, metricOptions, metricCriteria, onChange}) => {
       columnFormats={columnFormats}
       metricOptions={metricOptions}
       metricCriteria={metricCriteria[index]}
-      metricCount={metricCount}
+      metricCount={metricCriteria.length}
       onChange={handleMetricChange}
       addMetric={addMetric}
       dropMetric={dropMetric}

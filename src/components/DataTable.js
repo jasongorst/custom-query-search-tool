@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Container, Dimmer, Icon, Message, Table } from 'semantic-ui-react'
 import DataPaginate from './DataPaginate'
 import formatResponseData from '../helpers/formatResponseData'

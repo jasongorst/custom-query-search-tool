@@ -1,4 +1,3 @@
-import React from 'react'
 import { Container, Form, Grid } from 'semantic-ui-react'
 import RestaurantIdsSelect from './RestaurantIdsSelect'
 import DateRangePicker from './DateRangePicker'
