@@ -13,17 +13,18 @@ const MetricFilter = ({
     return columnFormats.find((col) => col.metricCode === metricCriteria.metricCode)
   }
 
-  let label = null
-  let labelPosition = "left"
+  let icon = null
+  let iconPosition = null
 
   if (getValueFormat()) {
     switch (getValueFormat().dataType) {
       case "Money":
-        label = {basic: true, content: "$"}
+        icon = "dollar sign"
+        iconPosition = "left"
         break
       case "Percent":
-        label = {basic: true, content: "%"}
-        labelPosition = "right"
+        icon = "percent"
+        iconPosition = "right"
         break
       case "Number":
       default:
@@ -55,8 +56,8 @@ const MetricFilter = ({
       <Form.Field>
         <label>Value</label>
         <Input
-          label={label}
-          labelPosition={labelPosition}
+          icon={icon}
+          iconPosition={iconPosition}
           name="value"
           fluid
           placeholder=""
