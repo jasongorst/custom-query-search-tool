@@ -1,35 +1,37 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Container, Form, Grid } from 'semantic-ui-react'
 import RestaurantIdsSelect from './RestaurantIdsSelect'
 import DateRangePicker from './DateRangePicker'
 import TimeRange from './TimeRange'
 import Metrics from "./Metrics"
+import useQueryParam from '../helpers/useQueryParam'
 import formatRequest from '../helpers/formatRequest'
 
 const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
-  const [formData, setFormData] = useState({
-    restaurantIds: [],
-    dateRange: '',
-    fromHour: '06:00 am',
-    toHour: '05:00 am',
-    metricCriteria: [
-      {
-        metricCode: '',
-        compareType: '',
-        value: '',
-      },
-    ]
-  })
+  let [formData, setFormData] = useQueryParam("filter")
+
+  if (!formData) {
+    formData = {
+      restaurantIds: [],
+      dateRange: '',
+      fromHour: '06:00 am',
+      toHour: '05:00 am',
+      metricCriteria: [
+        {
+          metricCode: '',
+          compareType: '',
+          value: '',
+        },
+      ],
+    }
+  }
 
   const handleChange = (e, {name, value}) => {
-    setFormData({...formData, [name]: value})
+    setFormData({...formData, [name]: value}, {replace: true})
   }
 
   const handleMetricsChange = (metricCriteria) => {
-    setFormData({
-      ...formData,
-      metricCriteria: metricCriteria,
-    })
+    setFormData({...formData, metricCriteria: metricCriteria}, {replace: true})
   }
 
   const filterTransactions = () => {
