@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 const Pagelayout = () => {
   return (
     <div>
-      <h2>Some subpage layout</h2>
+      <h3>Some subpage layout</h3>
 
       <Outlet/>
     </div>

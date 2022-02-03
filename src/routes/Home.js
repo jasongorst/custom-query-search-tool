@@ -4,13 +4,12 @@ const Home = () => {
   return (
     <div>
       <header>
-        <h1>Home</h1>
+        <h2>Home</h2>
         <p>The home page of the site.</p>
       </header>
 
       <nav>
         <ul>
-          <li><Link to="/">Home</Link></li>
           <li><Link to="/app">Custom Query Search Tool</Link></li>
           <li><Link to="/about">About</Link></li>
         </ul>
