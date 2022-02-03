@@ -12,7 +12,7 @@ const DataPaginate = ({rows, page, perPage, handlePageChange, handlePerPageChang
 
   return (
     <Grid>
-      <Grid.Row style={{paddingBottom: "1 rem"}}>
+      <Grid.Row>
         <Grid.Column width={13}>
           <br/>
           {rows > perPage && <Pagination
