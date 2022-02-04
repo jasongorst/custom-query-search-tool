@@ -1,28 +1,40 @@
-import { Container, Form, Grid } from 'semantic-ui-react'
-import RestaurantIdsSelect from './RestaurantIdsSelect'
-import DateRangePicker from './DateRangePicker'
-import TimeRange from './TimeRange'
+import { useState } from "react"
+import { Container, Form, Grid, Icon, Message } from "semantic-ui-react"
+import RestaurantIdsSelect from "./RestaurantIdsSelect"
+import DateRangePicker from "./DateRangePicker"
+import TimeRange from "./TimeRange"
 import Metrics from "./Metrics"
-import useQueryParam from '../helpers/useQueryParam'
-import formatRequest from '../helpers/formatRequest'
+import useQueryParam from "../helpers/useQueryParam"
+import formatRequest from "../helpers/formatRequest"
+import isFormComplete from "../helpers/isFormComplete"
 
 const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
   let [formData, setFormData] = useQueryParam("filter")
+  const [formIncomplete, setFormIncomplete] = useState(false)
+
+  const formDataDefaults = {
+    restaurantIds: [],
+    dateRange: "",
+    fromHour: "06:00 am",
+    toHour: "05:00 am",
+    metricCriteria: [
+      {
+        metricCode: "",
+        compareType: "",
+        value: "",
+      },
+    ],
+  }
 
   if (!formData) {
-    formData = {
-      restaurantIds: [],
-      dateRange: '',
-      fromHour: '06:00 am',
-      toHour: '05:00 am',
-      metricCriteria: [
-        {
-          metricCode: '',
-          compareType: '',
-          value: '',
-        },
-      ],
-    }
+    formData = formDataDefaults
+  }
+
+  const filterTransactions = () => {
+    if (isFormComplete(formData)) {
+      setFormIncomplete(false)
+      setRequest(formatRequest(formData, columnFormats))
+    } else setFormIncomplete(true)
   }
 
   const handleChange = (e, {name, value}) => {
@@ -33,13 +45,15 @@ const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
     setFormData({...formData, metricCriteria: metricCriteria}, {replace: true})
   }
 
-  const filterTransactions = () => {
-    const formattedRequest = formatRequest(formData, columnFormats)
-    setRequest(formattedRequest)
-  }
-
   return (
     <Container>
+      {formIncomplete && <Message warning icon>
+        <Icon name="exclamation"/>
+        <Message.Content>
+          <Message.Header>Filter Incomplete</Message.Header>
+          Please fill out all of the fields.
+        </Message.Content>>
+      </Message>}
       <Form onSubmit={filterTransactions}>
         <Grid>
           <Grid.Row>
