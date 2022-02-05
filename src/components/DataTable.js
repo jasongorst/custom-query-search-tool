@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Container, Dimmer, Icon, Message, Table } from 'semantic-ui-react'
 import DataPaginate from './DataPaginate'
 import formatResponseData from '../helpers/formatResponseData'
-import useQueryParam from "../helpers/useQueryParam"
+import useQueryParam from '../helpers/useQueryParam'
 import { URL_API } from '../config'
 
 const DataTable = ({columnFormats, request}) => {

@@ -1,12 +1,12 @@
-import { useState } from "react"
-import { Container, Form, Grid, Icon, Message } from "semantic-ui-react"
-import RestaurantIdsSelect from "./RestaurantIdsSelect"
-import DateRangePicker from "./DateRangePicker"
-import TimeRange from "./TimeRange"
-import Metrics from "./Metrics"
-import useQueryParam from "../helpers/useQueryParam"
-import formatRequest from "../helpers/formatRequest"
-import isFormComplete from "../helpers/isFormComplete"
+import { useState } from 'react'
+import { Container, Form, Grid, Icon, Message } from 'semantic-ui-react'
+import RestaurantIdsSelect from './RestaurantIdsSelect'
+import DateRangePicker from './DateRangePicker'
+import TimeRange from './TimeRange'
+import Metrics from './Metrics'
+import useQueryParam from '../helpers/useQueryParam'
+import formatRequest from '../helpers/formatRequest'
+import isFormComplete from '../helpers/isFormComplete'
 
 const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
   let [formData, setFormData] = useQueryParam("filter")

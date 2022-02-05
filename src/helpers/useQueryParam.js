@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as JSURL from 'jsurl'
-import { useSearchParams } from "react-router-dom"
+import { useSearchParams } from 'react-router-dom'
 
 
 const useQueryParam = (key) => {

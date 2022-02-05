@@ -1,6 +1,6 @@
-import { Button, Container, Header, Menu, Segment } from "semantic-ui-react"
-import { Link } from "react-router-dom"
-import "../css/Home.css"
+import { Button, Container, Header, Menu, Segment } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import '../css/Home.css'
 
 const Home = () => {
   return (
