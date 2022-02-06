@@ -9,9 +9,9 @@ import formatRequest from '../helpers/formatRequest'
 import isFormComplete from '../helpers/isFormComplete'
 
 const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
-  let [formData, setFormData] = useQueryParam("filter")
   const [formIncomplete, setFormIncomplete] = useState(false)
 
+  let [formData, setFormData] = useQueryParam("filter")
   const formDataDefaults = {
     restaurantIds: [],
     dateRange: "",
@@ -25,16 +25,17 @@ const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
       },
     ],
   }
-
   if (!formData) {
     formData = formDataDefaults
   }
 
-  const filterTransactions = () => {
+  const handleSubmit = () => {
     if (isFormComplete(formData)) {
       setFormIncomplete(false)
       setRequest(formatRequest(formData, columnFormats))
-    } else setFormIncomplete(true)
+    } else {
+      setFormIncomplete(true)
+    }
   }
 
   const handleChange = (e, {name, value}) => {
@@ -54,7 +55,7 @@ const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
           Please fill out all of the fields.
         </Message.Content>>
       </Message>}
-      <Form onSubmit={filterTransactions}>
+      <Form onSubmit={handleSubmit}>
         <Grid>
           <Grid.Row>
             <Grid.Column width={8}>
