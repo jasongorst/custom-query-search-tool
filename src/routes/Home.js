@@ -24,9 +24,9 @@ const Home = () => {
             A search form to filter transaction data, built with React.
           </Header>
           <p>
-            Presenting a form allowing the user to create a custom search
-            query with up to five filter criteria, which calls a backend API
-            and returns the resulting data as a paginated table.
+            Allowing a search query with up to five filter criteria,
+            which calls a backend API and returns the resulting data as a
+            paginated table.
           </p>
           <Button size="huge"><Link to="/app">Check It Out</Link></Button>
         </Container>
