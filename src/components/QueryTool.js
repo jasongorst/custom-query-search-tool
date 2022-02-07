@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
-import { Container, Grid } from 'semantic-ui-react'
-import FilterForm from '../components/FilterForm'
-import DataTable from '../components/DataTable'
+import { Container, Grid, Icon, Message } from 'semantic-ui-react'
+import FilterForm from './FilterForm'
+import DataTable from './DataTable'
 import { defaultColumns, URL_API } from '../config'
 
 const QueryTool = () => {
   const [metricDefinitions, setMetricDefinitions] = useState([])
   const [request, setRequest] = useState()
+  const [error, setError] = useState()
 
   const getData = async (url = "") => {
     const response = await fetch(url, {
@@ -22,25 +23,32 @@ const QueryTool = () => {
         (defs) => {
           setMetricDefinitions(defs)
         },
-        (error) => {
-          console.error("Error: " + error.message)
+        (err) => {
+          setError(err.message)
         },
       )
   }, [])
 
-  const metricOptions = metricDefinitions.map((metric) => {
-    return {
+  const metricOptions = metricDefinitions.map((metric) => (
+    {
       key: metric.metricCode,
       text: metric.alias,
       value: metric.metricCode,
     }
-  })
+  ))
 
   const columnFormats = defaultColumns.concat(metricDefinitions)
 
   return (
     <div className="App">
       <Container style={{margin: 50}}>
+        {error && <Message error icon>
+          <Icon name="exclamation triangle"/>
+          <Message.Content>
+            <Message.Header>Something Went Wrong</Message.Header>
+            {error}
+          </Message.Content>
+        </Message>}
         <Grid celled="internally">
           <Grid.Row columns={1}>
             <Grid.Column>
@@ -56,6 +64,7 @@ const QueryTool = () => {
               <DataTable
                 columnFormats={columnFormats}
                 request={request}
+                setError={setError}
               />
             </Grid.Column>
           </Grid.Row>

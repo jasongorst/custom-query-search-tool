@@ -4,7 +4,7 @@ import DataPaginate from './DataPaginate'
 import formatResponseData from '../helpers/formatResponseData'
 import { URL_API } from '../config'
 
-const DataTable = ({columnFormats, request}) => {
+const DataTable = ({columnFormats, request, setError}) => {
   const perPage = 20
 
   const [loading, setLoading] = useState(false)
@@ -14,7 +14,7 @@ const DataTable = ({columnFormats, request}) => {
 
   const createHeaders = (tableHeaders) => {
     return tableHeaders.map((header, hdridx) => (
-      <Table.HeaderCell key={`headers-${hdridx}`}>{header}</Table.HeaderCell>
+      <Table.HeaderCell key={hdridx}>{header}</Table.HeaderCell>
     ))
   }
 
@@ -22,7 +22,7 @@ const DataTable = ({columnFormats, request}) => {
     return tableData.map((row, rowidx) => (
       <Table.Row key={rowidx}>
         {row.map((cell, colidx) => (
-          <Table.Cell key={`${rowidx}-${colidx}`} singleLine>{cell}</Table.Cell>
+          <Table.Cell key={colidx} singleLine>{cell}</Table.Cell>
         ))}
       </Table.Row>
     ))
@@ -54,13 +54,13 @@ const DataTable = ({columnFormats, request}) => {
 
             setLoading(false)
           },
-          (error) => {
-            console.error("Error: " + error.message)
+          (err) => {
+            setError(err.message)
             setLoading(false)
           },
         )
     }
-  }, [request, columnFormats, setPage])
+  }, [request, columnFormats, setPage, setError])
 
   const handlePageChange = (e, {activePage}) => {
     setPage(activePage)
