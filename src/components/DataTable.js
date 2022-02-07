@@ -6,13 +6,11 @@ import useQueryParam from '../helpers/useQueryParam'
 import { URL_API } from '../config'
 
 const DataTable = ({columnFormats, request}) => {
-  const [loading, setLoading] = useState(false)
+  const perPage = 20
 
+  const [loading, setLoading] = useState(false)
   const [headers, setHeaders] = useState([])
   const [body, setBody] = useState([])
-
-  // const [perPage, setPerPage] = useState(20)
-  const perPage = 20
 
   let [page, setPage] = useQueryParam("page")
   if (!page) {
@@ -52,28 +50,25 @@ const DataTable = ({columnFormats, request}) => {
       setLoading(true)
 
       getTableData(URL_API + "/Search/Query", request)
-        .then((data) => {
-          const [tableHeaders, tableData] = formatResponseData(data, columnFormats)
-          setHeaders(createHeaders(tableHeaders))
-          setBody(createBody(tableData))
-        })
-        .catch((error) => {
-          console.error("Error fetching transaction data from API: " + error)
-        })
-        .finally(() => {
-          setLoading(false)
-        })
+        .then(
+          (data) => {
+            const [tableHeaders, tableData] = formatResponseData(data, columnFormats)
+            setHeaders(createHeaders(tableHeaders))
+            setBody(createBody(tableData))
+
+            setLoading(false)
+          },
+          (error) => {
+            console.error("Error: " + error.message)
+            setLoading(false)
+          },
+        )
     }
   }, [request, columnFormats])
 
   const handlePageChange = (e, {activePage}) => {
     setPage(activePage)
   }
-
-  // const handlePerPageChange = (e, {value}) => {
-  //   setPage(1)
-  //   setPerPage(value)
-  // }
 
   return (
     <Container>

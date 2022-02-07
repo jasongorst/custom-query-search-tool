@@ -18,17 +18,19 @@ const QueryTool = () => {
 
   useEffect(() => {
     getData(URL_API + "/Search/MetricDefinitions")
-      .then((defs) => {
-        setMetricDefinitions(defs)
-      })
-      .catch((error) => {
-        console.error("Error fetching metric definitions from API: " + error)
-      })
+      .then(
+        (defs) => {
+          setMetricDefinitions(defs)
+        },
+        (error) => {
+          console.error("Error: " + error.message)
+        },
+      )
   }, [])
 
-  const metricOptions = metricDefinitions.map((metric, index) => {
+  const metricOptions = metricDefinitions.map((metric) => {
     return {
-      key: index,
+      key: metric.metricCode,
       text: metric.alias,
       value: metric.metricCode,
     }
@@ -50,7 +52,7 @@ const QueryTool = () => {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row columns={1}>
-            <Grid.Column style={{overflowX: "auto", overflowY: "hidden"}}>
+            <Grid.Column style={{overflow: "auto hidden"}}>
               <DataTable
                 columnFormats={columnFormats}
                 request={request}
