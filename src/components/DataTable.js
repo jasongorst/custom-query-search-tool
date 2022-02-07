@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { Container, Dimmer, Icon, Message, Table } from 'semantic-ui-react'
 import DataPaginate from './DataPaginate'
 import formatResponseData from '../helpers/formatResponseData'
-import useQueryParam from '../helpers/useQueryParam'
 import { URL_API } from '../config'
 
 const DataTable = ({columnFormats, request}) => {
@@ -11,11 +10,7 @@ const DataTable = ({columnFormats, request}) => {
   const [loading, setLoading] = useState(false)
   const [headers, setHeaders] = useState([])
   const [body, setBody] = useState([])
-
-  let [page, setPage] = useQueryParam("page")
-  if (!page) {
-    page = 1
-  }
+  const [page, setPage] = useState(1)
 
   const createHeaders = (tableHeaders) => {
     return tableHeaders.map((header, hdridx) => (
@@ -55,6 +50,7 @@ const DataTable = ({columnFormats, request}) => {
             const [tableHeaders, tableData] = formatResponseData(data, columnFormats)
             setHeaders(createHeaders(tableHeaders))
             setBody(createBody(tableData))
+            setPage(1)
 
             setLoading(false)
           },
@@ -64,7 +60,7 @@ const DataTable = ({columnFormats, request}) => {
           },
         )
     }
-  }, [request, columnFormats])
+  }, [request, columnFormats, setPage])
 
   const handlePageChange = (e, {activePage}) => {
     setPage(activePage)
@@ -87,7 +83,6 @@ const DataTable = ({columnFormats, request}) => {
           page={page}
           perPage={perPage}
           handlePageChange={handlePageChange}
-          // handlePerPageChange={handlePerPageChange}
         />
         <Table striped>
           <Table.Header>

@@ -1,10 +1,7 @@
 import moment from 'moment'
+import { DATE_FORMAT, HOUR_FORMAT, TIME_FORMAT } from '../config'
 
 const formatRequest = ({restaurantIds, dateRange, fromHour, toHour, metricCriteria}, columnFormats) => {
-  const DATE_FORMAT = "MM/DD/YYYY"
-  const TIME_FORMAT = "hh:mm a"
-  const HOUR_FORMAT = "H"
-
   const [fromDate, toDate] = dateRange.split(' - ').map((date) => moment(date, DATE_FORMAT).toISOString())
 
   fromHour = parseInt(moment(fromHour, TIME_FORMAT).format(HOUR_FORMAT))

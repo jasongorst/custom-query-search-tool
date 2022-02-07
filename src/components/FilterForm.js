@@ -40,10 +40,12 @@ const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
 
   const handleChange = (e, {name, value}) => {
     setFormData({...formData, [name]: value}, {replace: true})
+    setFormIncomplete(false)
   }
 
   const handleMetricsChange = (metricCriteria) => {
     setFormData({...formData, metricCriteria: metricCriteria}, {replace: true})
+    setFormIncomplete(false)
   }
 
   return (
