@@ -1,6 +1,6 @@
 import '../css/cover.css'
 import { Button, Container, Header, Menu, Segment } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const Home = () => {
   return (
@@ -11,9 +11,9 @@ const Home = () => {
             Custom Query Search Tool
           </Header>
           <Menu borderless compact inverted>
-            <Menu.Item active>Home</Menu.Item>
-            <Menu.Item><Link to="/app">App</Link></Menu.Item>
-            <Menu.Item><Link to="/about">About</Link></Menu.Item>
+            <Menu.Item as={NavLink} to="/">Home</Menu.Item>
+            <Menu.Item as={NavLink} to="/app">App</Menu.Item>
+            <Menu.Item as={NavLink} to="/about">About</Menu.Item>
           </Menu>
         </Container>
         <Container className="content">
@@ -24,19 +24,14 @@ const Home = () => {
             A search form to filter transaction data, built with React.
           </Header>
           <p>
-            Allowing a search query with up to five filter criteria,
-            which calls a backend API and returns the resulting data as a
+            Create a search query with up to five filter criteria, which
+            then calls a backend API and returns the resulting data as a
             paginated table.
           </p>
           <Button size="huge"><Link to="/app">Check It Out</Link></Button>
         </Container>
         <Segment inverted vertical as="footer">
-          Cover template for <a href="http://semantic-ui.com">Semantic-UI</a>,
-          by{" "}
-          <a href="https://github.com/semantic-ui-forest">
-            @Semantic-UI-Forest
-          </a>
-          .
+          By <a href="mailto:jason.gorst@me.com">Jason Gorst</a> in 2022.
         </Segment>
       </Segment>
     </div>

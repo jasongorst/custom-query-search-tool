@@ -1,0 +1,36 @@
+.PageLayout .ui.center.aligned.container {
+    margin-top: 4em;
+}
+
+.PageLayout p.lead {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.3em;
+    color: #333333;
+    line-height: 1.4;
+    font-weight: 300;
+}
+
+.PageLayout .ui.huge.header {
+    font-size: 36px;
+}
+
+.PageLayout .ui.inverted.menu {
+    border-radius: 0;
+    flex-wrap: wrap;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.PageLayout .ui.mobile.only.grid .ui.menu .ui.vertical.menu {
+    display: none;
+}
+
+.PageLayout .ui.inverted.menu .item {
+    color: rgb(157, 157, 157);
+    font-size: 16px;
+}
+
+.PageLayout .ui.inverted.menu .item .active {
+    background-color: #080808;
+}

@@ -1,25 +1,17 @@
+import { Container, Header } from 'semantic-ui-react'
+
 const About = () => {
   return (
-    <div>
-      <h2>About</h2>
-      <p>An About page would go here.</p>
-
-      <h3>Built with:</h3>
-      <ul>
-        <li>React</li>
-        <li>react-router</li>
-        <li>semantic-ui</li>
-        <li>react-semantic-ui</li>
-        <li>semantic-ui-calendar-react</li>
-      </ul>
-
-      <h3>Using:</h3>
-      <ul>
-        <li>create-react-app</li>
-        <li>jsurl</li>
-        <li>moment</li>
-        <li>lodash</li>
-      </ul>
+    <div className="About">
+      <Container text textAlign="center">
+        <Header size="huge">Semantic-UI starter template</Header>
+        <p className="lead">
+          Use this document as a way to quickly start any new project.
+        </p>
+        <p className="lead">
+          All you get is this text and a mostly barebones HTML document.
+        </p>
+      </Container>
     </div>
   )
 }

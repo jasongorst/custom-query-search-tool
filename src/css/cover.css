@@ -74,6 +74,10 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.Home .ui.content.container .button a {
+    color: inherit;
+}
+
 .Home .ui.inverted.vertical.segment footer.ui.segment {
     height: 80px;
     width: 100%;
