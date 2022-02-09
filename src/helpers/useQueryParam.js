@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useCallback, useMemo } from 'react'
 import * as JSURL from 'jsurl'
 import { useSearchParams } from 'react-router-dom'
 
@@ -7,9 +7,9 @@ const useQueryParam = (key) => {
   let [searchParams, setSearchParams] = useSearchParams()
   let paramValue = searchParams.get(key)
 
-  let value = React.useMemo(() => JSURL.parse(paramValue), [paramValue])
+  let value = useMemo(() => JSURL.parse(paramValue), [paramValue])
 
-  let setValue = React.useCallback((newValue, options) => {
+  let setValue = useCallback((newValue, options) => {
     let newSearchParams = new URLSearchParams(searchParams)
     newSearchParams.set(key, JSURL.stringify(newValue))
     setSearchParams(newSearchParams, options)
