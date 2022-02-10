@@ -79,9 +79,8 @@ const DataTable = ({columnFormats, request, setError}) => {
 
       {body.length > 0 && <Dimmer.Dimmable as={Container} blurring dimmed={loading}>
         <DataPaginate
-          rows={body.length}
           page={page}
-          perPage={perPage}
+          totalPages={Math.ceil(body.length / perPage)}
           handlePageChange={handlePageChange}
         />
         <Table striped>

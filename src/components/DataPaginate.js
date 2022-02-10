@@ -1,14 +1,14 @@
 import { Pagination } from 'semantic-ui-react'
 
-const DataPaginate = ({rows, page, perPage, handlePageChange}) => {
+const DataPaginate = ({page, totalPages, handlePageChange}) => {
   return (
     <>
-      {rows > perPage && <Pagination
+      {totalPages > 1 && <Pagination
         boundaryRange={1}
         siblingRange={2}
         firstItem={null}
         lastItem={null}
-        totalPages={Math.ceil(rows / perPage)}
+        totalPages={totalPages}
         activePage={page}
         onPageChange={handlePageChange}
       />}
