@@ -1,11 +1,11 @@
 import _ from 'lodash'
 
 const ids = _.range(1, 11)
-export const restaurantIdOptions = ids.map((x) => Object(
+export const restaurantIdOptions = ids.map((x) => (
   {
     key: x,
     text: `Restaurant ${x}`,
-    value: x
+    value: x,
   }
 ))
 
