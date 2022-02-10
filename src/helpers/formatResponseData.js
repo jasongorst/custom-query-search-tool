@@ -6,11 +6,19 @@ const formatResponseData = (data, columnFormats) => {
     switch (dataType) {
       case "Number":
         return new Intl.NumberFormat('en-US',
-          {useGrouping: false, minimumFractionDigits: decimalPlaces, maximumFractionDigits: decimalPlaces})
+          {
+            useGrouping: false,
+            minimumFractionDigits: decimalPlaces,
+            maximumFractionDigits: decimalPlaces,
+          })
           .format(value)
       case "Percent":
         return new Intl.NumberFormat('en-US',
-          {style: 'percent', minimumFractionDigits: decimalPlaces, maximumFractionDigits: decimalPlaces})
+          {
+            style: 'percent',
+            minimumFractionDigits: decimalPlaces,
+            maximumFractionDigits: decimalPlaces,
+          })
           .format(value)
       case "Money":
         return new Intl.NumberFormat('en-US',
@@ -31,11 +39,11 @@ const formatResponseData = (data, columnFormats) => {
   }
 
   const tableHeaders = columnFormats.map((column) => column.alias)
-  const tableData = data.map((row) =>
-    (columnFormats.map((col) =>
-        formatValue(row[_.camelCase(col.metricCode)], col.dataType, col.decimalPlaces),
-      )
-    ))
+  const tableData = data.map((row) => (
+    columnFormats.map((column) =>
+      formatValue(row[_.camelCase(column.metricCode)], column.dataType, column.decimalPlaces),
+    )
+  ))
 
   return [tableHeaders, tableData]
 }
