@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import moment from 'moment'
+import { DATE_FORMAT, TIME_FORMAT } from '../config'
 
 const formatResponseData = (data, columnFormats) => {
   const formatValue = (value, dataType, decimalPlaces) => {
@@ -30,9 +31,9 @@ const formatResponseData = (data, columnFormats) => {
           })
           .format(value)
       case "Date":
-        return moment(value).format("MM/DD/YYYY")
+        return moment(value).format(DATE_FORMAT)
       case "Time":
-        return moment(value).format("hh:mm a")
+        return moment(value).format(TIME_FORMAT)
       default:
         return value
     }
