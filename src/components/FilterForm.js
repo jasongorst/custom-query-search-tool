@@ -29,6 +29,10 @@ const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
     formData = formDataDefaults
   }
 
+  const handleReset = () => {
+    setFormData(formDataDefaults)
+  }
+
   const handleSubmit = () => {
     if (isFormComplete(formData)) {
       setFormIncomplete(false)
@@ -88,7 +92,15 @@ const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row centered columns={3}>
+          <Grid.Row columns={3}>
+            <Grid.Column>
+              <Form.Button
+                secondary
+                type="button"
+                content="Reset Filters"
+                onClick={handleReset}
+              />
+            </Grid.Column>
             <Grid.Column>
               <Form.Button
                 fluid
@@ -97,6 +109,7 @@ const FilterForm = ({columnFormats, metricOptions, setRequest}) => {
                 content="Filter Transactions"
               />
             </Grid.Column>
+            <Grid.Column/>
           </Grid.Row>
         </Grid>
       </Form>
