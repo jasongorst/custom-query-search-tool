@@ -1,4 +1,4 @@
-import { Button, Form, Input } from 'semantic-ui-react'
+import { Button, Form, Input, Popup } from 'semantic-ui-react'
 import { compareOptions } from '../helpers/dropdownOptions'
 
 const MetricFilter = ({
@@ -67,20 +67,28 @@ const MetricFilter = ({
         />
       </Form.Field>
       <Button.Group basic icon style={{border: 'none'}}>
-        <Button
-          compact
-          type="button"
-          icon="minus square outline"
-          style={{padding: 0, border: 'none', visibility: (showMinusButton ? 'visible' : 'hidden')}}
-          metricindex={metricindex}
-          onClick={dropMetric}
+        <Popup
+          content="Remove this filter"
+          position="left center"
+          trigger={<Button
+            compact
+            type="button"
+            icon="minus square outline"
+            style={{padding: 0, border: 'none', visibility: (showMinusButton ? 'visible' : 'hidden')}}
+            metricindex={metricindex}
+            onClick={dropMetric}
+          />}
         />
-        <Button
-          compact
-          type="button"
-          icon="plus square outline"
-          style={{padding: 0, border: 'none', visibility: (showPlusButton ? 'visible' : 'hidden')}}
-          onClick={addMetric}
+        <Popup
+          content="Add another filter"
+          position="right center"
+          trigger={<Button
+            compact
+            type="button"
+            icon="plus square outline"
+            style={{padding: 0, border: 'none', visibility: (showPlusButton ? 'visible' : 'hidden')}}
+            onClick={addMetric}
+          />}
         />
       </Button.Group>
     </Form.Group>
