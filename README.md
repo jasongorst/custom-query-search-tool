@@ -1,70 +1,17 @@
-# Getting Started with Create React App
+# Custom Query Search Tool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created by [Jason Gorst](https://jasongorst.com) during a micro-internship
+with [Open Avenues Foundation](https://www.openavenuesfoundation.org) in cooperation
+with [Delaget](https://www.delaget.com), under the supervision
+of [Vaclav Hasenohrl](https://www.linkedin.com/in/vaclav-hasenohrl-399431116/).
 
-## Available Scripts
+The application is coded in JavaScript, and is a custom search query form that allows the user to fetch selected
+transaction data from a back-end API and presents it in a table.
 
-In the project directory, you can run:
+It was created with [React](https://reactjs.org), utilizing the [React integration](https://react.semantic-ui.com)
+for [Semantic UI](https://semantic-ui.com). Other libraries utilized are [React Router](https://reactrouter.com)
+, [semantic-ui-calendar-react](https://github.com/arfedulov/semantic-ui-calendar-react), [Moment](https://momentjs.com),
+and [JSURL](https://github.com/Sage/jsurl).
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The source code is available on [Github](https://github.com/jasongorst/custom-query-search-tool), and is released under
+the [MIT License](https://choosealicense.com/licenses/mit/).

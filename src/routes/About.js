@@ -16,11 +16,15 @@ const About = () => {
           selected transaction data from a back-end API and presents it in a table.
         </p>
         <p>
-          It was created with <a href="https://reactjs.org">React</a>, utilizing the React <a
-          href="https://react.semantic-ui.com">integration</a> for <a href="https://semantic-ui.com">Semantic UI</a>.
-          Other libraries utilized are <a href="https://reactrouter.com">React Router</a>, <a
+          It was created with <a href="https://reactjs.org">React</a>, utilizing the <a
+          href="https://react.semantic-ui.com">React integration</a> for <a href="https://semantic-ui.com">Semantic
+          UI</a>. Other libraries utilized are <a href="https://reactrouter.com">React Router</a>, <a
           href="https://github.com/arfedulov/semantic-ui-calendar-react">semantic-ui-calendar-react</a>, <a
           href="https://momentjs.com">Moment</a>, and <a href="https://github.com/Sage/jsurl">JSURL</a>.
+        </p>
+        <p>
+          The source code is available on <a href="https://github.com/jasongorst/custom-query-search-tool">Github</a>,
+          and is released under the <a href="https://choosealicense.com/licenses/mit/">MIT License</a>.
         </p>
       </Container>
     </div>
