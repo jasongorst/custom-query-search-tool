@@ -6,14 +6,14 @@ const About = () => {
       <Container text textAlign="center">
         <Header size="huge">About</Header>
         <p className="lead">
+          This application is a form coded in JavaScript that allows the user to create a custom search query, fetches
+          the selected transaction data from a back-end API, and presents it in a table.
+        </p>
+        <p>
           This project was created by <a href="https://jasongorst.com">Jason Gorst</a> during a micro-internship with <a
           href="https://www.openavenuesfoundation.org">Open Avenues Foundation</a> in cooperation with <a
           href="https://www.delaget.com">Delaget</a>, under the supervision of <a
           href="https://www.linkedin.com/in/vaclav-hasenohrl-399431116/">Vaclav Hasenohrl</a>.
-        </p>
-        <p>
-          The application is coded in JavaScript, and is a custom search query form that allows the user to fetch
-          selected transaction data from a back-end API and presents it in a table.
         </p>
         <p>
           It was created with <a href="https://reactjs.org">React</a>, utilizing the <a
