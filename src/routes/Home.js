@@ -31,7 +31,7 @@ const Home = () => {
           <Button size="huge"><Link to="/app">Check It Out</Link></Button>
         </Container>
         <Segment inverted vertical as="footer">
-          By <a href="mailto:jason.gorst@me.com">Jason Gorst</a> in 2022.
+          By <a href="https://www.linkedin.com/in/jason-gorst/">Jason Gorst</a> in 2022.
         </Segment>
       </Segment>
     </div>
