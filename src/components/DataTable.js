@@ -97,7 +97,7 @@ const DataTable = ({columnFormats, request, setError}) => {
       </Dimmer.Dimmable>}
 
       {request && body.length === 0 && !loading && <Message info icon>
-        <Icon name="x icon"/>
+        <Icon name="x"/>
         <Message.Content>
           <Message.Header>No Transactions Found</Message.Header>
           Try relaxing your filter requirements.
